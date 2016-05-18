@@ -1,0 +1,60 @@
+.logo 
+{
+    width: 900px;
+    height: 250px;
+}
+
+.usuario 
+{
+    background-image: url("FOTOS/user.png");
+    background-position-x: 101%;
+    background-position-y: 68%;
+    background-repeat: no-repeat;
+}
+
+.mail 
+{
+    background-image: url("FOTOS/pass.png");
+    background-position-x: 102%;
+    background-position-y: 46%;
+    background-repeat: no-repeat;
+}
+
+form
+{
+	vertical-align: center;
+
+}
+
+input 
+{
+    height: 73px;
+    width: 570px;
+    margin-bottom: 80px;
+    font-size: 28px;
+}
+
+body
+{   
+    background: url(FOTOS/default.jpg) no-repeat center center fixed;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+.registro
+{
+    width: 190px;
+    height: 50px;
+    float: right;
+    font-size: 20px;
+}
+button 
+{
+    width: 190px;
+    height: 68px;
+    color: #96AC3C;
+    font-size: 27px;
+}
