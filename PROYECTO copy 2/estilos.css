@@ -1,0 +1,58 @@
+* { 
+	margin:2px;   /*  margin nos permite fijar el margen de un elemento*/
+	}
+html{ 
+	height: 100%;
+}
+body{	
+	background: url(imagenes/defaul.jpg) ;
+	 /*Para indicar la imagen que se muestra como fondo de un elemento, se utiliza una URL.
+	La URL de la imagen que se quiere mostrar se incluye dentro de los paréntesis de la palabra url().
+	 De forma opcional, el valor de la URL se puede encerrar entre comillas simples o entre comillas dobles.*/
+	height: 100%;  /*alto*/
+}
+.logo{
+	width: 800px;
+	height: 190px;
+}
+.registro {
+	text-align: center;
+}
+.init {
+	width: 400px;
+	height: 50px;
+}
+#contenedor{
+				width: 1130px;
+				text-align:center;
+				margin-right:auto;
+				margin-left:auto;
+			}
+			#barra {
+				height:35px;
+				border-collapse:collapse;
+				padding: 1%;
+				background: black;
+				box-shadow: 0px 2px 4px #000;
+				font-family: 'Averia Sans Libre', cursive;
+				font-size: 20px;
+				text-align: center;
+			}
+			a.seleccion{
+				font-size: 19px;
+				color: white;
+				margin-left: 40px;
+				margin-right: 40px;
+				text-decoration: none;
+			}
+			
+			#contenido {
+				height:75px;
+			}
+     
+	        #texto {	/*Dandole estilo a los textos de la pag. */
+            padding: 70px;
+	        font-size: 20px;
+	        text-align: left;
+	        font-family:comic;
+	        }
