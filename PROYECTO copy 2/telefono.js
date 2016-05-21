@@ -1,6 +1,6 @@
 window.onload= function()
 {
-	document.formularioRegistro.addEventListener('submit', validarTelefono);
+	document.formularioRegistro.addEventListener('submit', validarTelefono());
 }
 
 function validarTelefono(evObject)
