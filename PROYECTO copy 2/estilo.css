@@ -1,0 +1,215 @@
+/*EMPIEZA EL CODIGO PARA TENER UN VIDEO BACKGROUND*/
+video#bgvid { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(polina.jpg) no-repeat;
+	background-size: cover; 
+}
+/*TERMINA EL CODIGO DEL VIDEO*/
+
+/*EMPIEZA EL CODIGO DEL FORMULARIO de inicio */
+.pal .logo 
+{
+    width: 900px;
+    height: 250px;
+}
+
+.pal .usuario 
+{
+    background-image: url("FOTOS/user.png");
+    background-position-x: 101%;
+    background-position-y: 68%;
+    background-repeat: no-repeat;
+}
+
+.pal .mail 
+{
+    background-image: url("FOTOS/pass.png");
+    background-position-x: 102%;
+    background-position-y: 46%;
+    background-repeat: no-repeat;
+}
+
+.pal form
+{
+	vertical-align: center;
+
+}
+
+.pal input 
+{
+    height: 73px;
+    width: 570px;
+    margin-bottom: 40px;
+    font-size: 28px;
+}
+
+.pal .registro
+{
+    width: 190px;
+    height: 50px;
+    float: right;
+    font-size: 20px;
+}
+.pal button 
+{
+    width: 190px;
+    height: 68px;
+    color: #96AC3C;
+    font-size: 27px;
+}
+/*TERMINA EL FORMULARIO DE INICIO*/
+
+/* EMPIEZA CODIGO GENERAL */
+h1 {
+font-size: 16px;	
+	}
+	
+p {
+font-size: 14;	
+	}
+
+footer {
+	text-align: center;
+	bottom: 5%;	
+	}
+
+a:link{
+	text-decoration: none;
+	font-style: normal;	
+	}
+
+/*TERMINA CODIGO GENERAL*/
+
+
+/*pagina buscador*/
+#previewcouch ul{
+	display: block;
+	/*list-style-type: none;	
+	text-align: center;
+	overflow: hidden;*/
+	padding: 5px;
+	margin: 10px;
+    top: 50%;
+    left: 50%;
+}
+
+#previewcouch {
+	margin: 10px;
+	clear: both;
+	}
+#previewcouch li{
+	display: inline-block;
+	margin: 5px;
+	padding: 2px;
+	}
+			
+	/*
+.imagenpreview {
+	width: 350px;
+	height: 180px;		
+		}*/
+		
+#contenedorgeneral{
+	width: 90%;
+	height: auto;
+	background-color: white;
+	border-color: black;
+	border-spacing: 10px;
+	padding: 10px;	
+	margin: auto;
+	display: block;
+	}
+
+
+.couch {
+	position: relative;
+	border-spacing: 5px;
+	padding: 5px;
+	background-size: 360px 320px;
+	background-repeat: no-repeat;
+	width: 350px;
+	height: 310px;
+	text-align: center;
+	color: white;
+	font-family: 'Averia Sans Libre', cursive;
+	border-radius: 4px;
+	box-shadow: 2px 2px 5px #999;
+	}
+
+
+.titulocouch{
+	position: absolute;
+	background-color: rgba(0,0,0,.5);
+	clear: both;
+	height: 30%;
+	left: 5px;
+	right: 5px;
+	bottom: 5px;	
+	}	
+
+
+/*termina pagina buscador*/
+
+
+/*inicio header pagina*/
+
+.iniciologo {
+	width: 215px;
+	height: 80px;
+	float: left;
+	top: 1%;		
+	}
+		
+#contenidobuscador {
+	width: 100%;
+	height: 70px;
+	margin-bottom:30px;
+	padding: 10px;
+	position: relative;
+	/*box-shadow: 0px 0px 1px #999;*/
+	border-bottom: 1px solid gray;
+	}
+
+#buscador{
+	position: absolute;
+	border-spacing: 10px;
+	padding: 5px;
+	left: 30%;
+	bottom: 5%;
+	text-align: center;
+	}
+	
+#contenidobuscador button {
+	float: right;
+	top: 5%;	
+	}
+
+#buscador ul{
+	list-style-type: none;
+	left: 50%;
+	display: block;	
+	/*	
+	text-align: center;
+	overflow: hidden;*/
+	}
+	
+#buscador li{
+	display: inline;	
+	text-align: center;
+	float: left;
+	margin: 5px;
+	padding: 1px;
+	}
+	
+/*termina header pagina*/
