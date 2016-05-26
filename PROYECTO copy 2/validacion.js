@@ -82,8 +82,9 @@ function validarusu()
 				  	}
 				  	else{
 				  		if(!document.getElementById('check1').checked){
-
 							alert('seleccione que acepta las condiciones');
+							//sino se cumple la condicion
+							return false;
 							}
 					else
 						//alert("se ingreso correctamente los datos");  (isNaN(parseInt(formulario.campo2.value))) esto es para q se solo numeros

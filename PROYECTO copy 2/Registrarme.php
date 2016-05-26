@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div>
-		<img class="logo" src="FOTOS/logo.png">
+		<a href="index.php"><img class="logo" src="FOTOS/logo.png"></a>
 	</div>
 	<div>
 		<form class="formularios" name="formulario" method="post" onsubmit=" return validarreg();" action="procesarusuario.php"> 
