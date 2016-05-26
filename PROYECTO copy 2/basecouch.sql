@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-05-2016 a las 23:05:57
+-- Tiempo de generación: 22-05-2016 a las 00:41:42
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.5.28
 
@@ -47,17 +47,7 @@ INSERT INTO `admin` (`mail`, `password`) VALUES
 CREATE TABLE IF NOT EXISTS `categoria` (
   `id_categoria` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `categoria`
---
-
-INSERT INTO `categoria` (`id_categoria`, `nombre`) VALUES
-(1, 'casa'),
-(2, 'choza'),
-(3, 'departamento'),
-(4, 'loft');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -72,22 +62,6 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
   `pregunta` varchar(80) NOT NULL,
   `respuesta` varchar(250) NOT NULL,
   `mail` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `couch`
---
-
-CREATE TABLE IF NOT EXISTS `couch` (
-  `id_couch` int(10) NOT NULL,
-  `mail` varchar(40) NOT NULL,
-  `id_categoria` varchar(11) NOT NULL,
-  `fecha_public` date NOT NULL,
-  `ubicacion` text NOT NULL,
-  `capacidad` int(11) NOT NULL,
-  `descripcion` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -149,17 +123,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `telefono` int(10) unsigned NOT NULL,
   `fechavencimiento` datetime DEFAULT NULL,
   `numTarjeta` int(10) unsigned DEFAULT NULL,
-  `id_pagos` varchar(45) DEFAULT NULL
+  `id_pagos` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`mail`, `password`, `fecha_nac`, `apellido`, `nombre`, `telefono`, `fechavencimiento`, `numTarjeta`, `id_pagos`) VALUES
-('nuevo2@gmail.com', '122222', '2016-05-18 00:00:00', 'nuevojuli', 'juli', 3333333333, NULL, NULL, NULL),
-('nuevo@gm.com', '333333333', '2016-05-10 00:00:00', 'jojo', 'jojojo', 34341123, NULL, NULL, NULL),
-('sebastian@mail.com', '12345', '2016-05-18 00:00:00', '', '', 0, NULL, NULL, '');
 
 --
 -- Índices para tablas volcadas
@@ -183,12 +148,6 @@ ALTER TABLE `categoria`
 --
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`id_comentarios`);
-
---
--- Indices de la tabla `couch`
---
-ALTER TABLE `couch`
-  ADD PRIMARY KEY (`id_couch`);
 
 --
 -- Indices de la tabla `fotografia`
@@ -228,17 +187,12 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
   MODIFY `id_comentarios` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `couch`
---
-ALTER TABLE `couch`
-  MODIFY `id_couch` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `fotografia`
 --

@@ -14,7 +14,7 @@
       ?>
       <script>
         alert("existe el mail con ese mismo nombre de usuario");
-        window.location.href="usuariocomun.php";
+        window.location.href="Registrarme.php";
        </script> 
        <?php
    }
@@ -24,9 +24,9 @@
     // if (!$insertarusu1) { die ("error en consulta: ".mysql_error());
     
      ?>
-     <!-- <script>
+      <script>
         alert("se inserto correctamente");
         window.location.href="usuariocomun.php";
-       </script> -->  
+     </script> -->  
      <?php
 ?>

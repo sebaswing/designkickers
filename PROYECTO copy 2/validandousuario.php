@@ -13,12 +13,11 @@
             <?php
                   $link=conectar();
                   $usuario = new Usuario();
-                  $usuario->iniciarsession($link,$_POST['mail'],$_POST['clave']);
-                  $_SESSION['mail']= $_POST['mail'];
+                  $usuario->iniciarsession($link,$_POST['correo'],$_POST['clave']);
+                  $_SESSION['mail']= $_POST['correo'];
 
                        if($usuario->getlogueado() == 'logueado') 
-                       {
-                                    
+                       {    
                           //direccionar al backend
                           $_SESSION['log'] = true;
 
