@@ -9,7 +9,7 @@
 </head>
 <div id="contenedorgeneral">
 	<div id="contenidobuscador">
-		<img class="iniciologo" src="FOTOS/logo.png" alt="logo" >
+		<a href="index.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
 	<div id="buscador">	
 	<ul>	
 		<li>Ubicacion:<select name="Ubicacion" >	
@@ -36,7 +36,7 @@
 		</form>
 	</ul>	
 	</div>
-		  <form  method="get" action="Registrarme.php">
+		  <form  method="get" action="index.php">
                   <button action="logout.php">CERRAR SESION</button>
           </form>
 	</div>
