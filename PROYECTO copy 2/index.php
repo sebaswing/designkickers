@@ -1,7 +1,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="estilo.css"> 
+<link rel="stylesheet" type="text/css" href="estilo.css">
+<link rel="icon"  href="FOTOS/favicon.jpg" />
 <link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="validacion.js"></script> <!--se procesa el archivo javascrip-->
 </head>

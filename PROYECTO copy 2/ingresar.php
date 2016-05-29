@@ -5,6 +5,7 @@
       <head>
           	<title>index</title> <!--titulo de la pagina -->
             <link rel="stylesheet" type="text/css" href="admin.css">  
+            <link rel="icon"  href="FOTOS/favicon.jpg" />
           	<meta charset="utf-8" /> <!-- funcion para poner los acentos automaticamente-->
           	<script type="text/javascript" src="validacion.js"></script> <!--se procesa el archivo javascrip-->
       </head>

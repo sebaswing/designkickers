@@ -6,15 +6,18 @@
 <head>
 <link rel="stylesheet" type="text/css" href="estilo.css"> 
 <link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'> 
+<link rel="icon"  href="FOTOS/favicon.jpg" />
 </head>
 <div id="contenedorgeneral">
 	<div id="contenidobuscador">
 		<a href="index.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
 	<div id="buscador">	
 	<ul>	
-		<li>Ubicacion:<select name="Ubicacion" >	
+		<li>Ubicacion:
+			<select name="Ubicacion" >	
 				<option value=""></option>
-			</select></li>
+			</select>
+		</li>
 	    <form method="get" action="usuariocomun.php">
 			<li>Categorias:<select name="Categoria" >
 				 <option value=""></option>
@@ -34,9 +37,16 @@
 		</form>
 	</ul>	
 	</div>
-		  <form  method="get" action="index.php">
-                  <button action="logout.php">CERRAR SESION</button>
-          </form>
+		<div id="botons">
+			  <form  method="get" action="index.php" >
+	                  <button id="cerrar" action="logout.php">CERRAR SESION</button>
+	                  <br>
+	          </form>
+	          <form  method="get" action="premium.php">
+	                  <button action="logout.php">HACETE PREMIUM</button>
+	                  <br>
+	          </form>
+        </div>
 	</div>
 	<div id="previewcouch">
 	<ul>

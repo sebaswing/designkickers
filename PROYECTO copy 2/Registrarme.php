@@ -4,6 +4,7 @@
 		 <meta charset="utf-8">
 		<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="Registrarme.css">
+		<link rel="icon"  href="FOTOS/favicon.jpg" />
 		<script type="text/javascript" src="validacion.js"></script>
 		<title></title>
 </head>
@@ -39,6 +40,7 @@
 		  </div>
 		  <!--el campo de Fecha de Nacimiento-->
 		  <div class="form-group">
+		  	<p>Cumpleaños<img id="present" src="FOTOS/present.png">:</p> 
 		    <input name="fechanac" class="fechaNac" type="date" placeholder="Fecha De Nacimiento" >
 		  </div>
 		  <!--el checkbox de condiciones-->
