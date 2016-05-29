@@ -2,7 +2,7 @@
   include("conexion.php");
   $link = conectar();
    $cor=$_POST['correo'];
-   $cla=$_POST['clave'];
+   $cla=$_POST['clave1'];
    $ape=$_POST['ape'];
    $nom=$_POST['nom'];
    $tel=$_POST['numeroTel'];
@@ -13,7 +13,7 @@
    if ($row == 1 ) {
       ?>
       <script>
-        alert("existe el mail con ese mismo nombre de usuario");
+        alert(" Ya existe un mail con ese mismo nombre de usuario");
         window.location.href="Registrarme.php";
        </script> 
        <?php

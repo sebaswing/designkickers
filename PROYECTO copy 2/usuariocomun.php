@@ -13,9 +13,7 @@
 	<div id="buscador">	
 	<ul>	
 		<li>Ubicacion:<select name="Ubicacion" >	
-				<option value="">Bs As</option>
-				<option value="">Cordoba</option>
-				<option value="">Misiones</option>
+				<option value=""></option>
 			</select></li>
 	    <form method="get" action="usuariocomun.php">
 			<li>Categorias:<select name="Categoria" >
@@ -78,6 +76,4 @@
 	</div>
 </div> 
 <footer> <p>CouchInn es una marca registrada. Todos los derechos reservados</p> </footer>
-
-
 </html>

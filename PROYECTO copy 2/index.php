@@ -18,7 +18,7 @@
 			<img src="FOTOS/logo.png" class="logo" align="right">
 		</div>
 		<div>
-		<form name="formulario" method="post" onsubmit=" return validarusu();" action="validandousuario.php">
+		<form name="formulario" method="post" onsubmit=" return validarreg();" action="validandousuario.php">
 		  <div>
 		    <label for="exampleInputEmail1"></label>
 		    <input name="correo" class="usuario" type="email" class="form-control" id="exampleInputEmail1" placeholder=" NOMBRE DE USUARIO">

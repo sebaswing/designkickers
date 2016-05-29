@@ -6,6 +6,7 @@
 	$sql= "DELETE from categoria where nombre = '".$categoria."'";
 	$insertar = mysqli_query($link , $sql);
 ?>
+	  
       <script>
         window.location.href="backend.php";
       </script>

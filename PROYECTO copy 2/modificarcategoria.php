@@ -10,6 +10,7 @@
             <meta charset="UTF-8"> <!-- Especifica la codificación de caracteres para el documento HTM-->
           	<title>Pagina Admin</title> <!--titulo de la pagina -->
            <link rel="stylesheet" type="text/css" href="admin.css">
+           <script type="text/javascript" src="validacion.js"></script> <!--se procesa el archivo javascrip-->
     </head>
     <img class="iniciologo" src="FOTOS/logo.png" alt="logo" >     
     <header> 
@@ -20,16 +21,13 @@
 	<body>
        <div id="contenedorgeneral">
 			<div id="contenidoadmin">
-			<form name="cargar" method="POST" action="funciones.php">
-				<input name="categoria" placeholder="ingrese categoria" />
-				<button name="nuevacategoria" type="submit" onclick="">cargar categoria</button>
-			</form >
-				<form name="mod" method="POST" action="modificarconsulta.php">
+		
+				<form name="cargar" onsubmit=" return validarcategoria2();" method="POST" action="modificarconsulta.php">
 				<?php
 				echo '<input type="hidden" name="modcategoriaviejo" value="'.$_POST['nombre'].'" />';
 				echo '<input name="modcategoria" value="'.$_POST['nombre'].'" />';
 				?>
-				<button name="modificarcategoria" type="submit" onclick="">modificar categoria</button>
+				<button name="modificarcategoria" type="submit">modificar categoria</button>
 			</form >
 			
 			<?php  //  consulta con sql de todas las categorias de la tabla
@@ -43,7 +41,7 @@
 								  {
 								  echo '<tr>';
 								  // se crea un form y un input para pasar el valor a la funcion que elimina la categoria
-								  echo '<form method="POST" action="eliminarcategoria.php" ><input type="hidden" name="nombre" value="'.$row['nombre'].'">';
+								  echo '<form name="miformulario" method="POST" onsubmit="return confirmDel();" action="eliminarcategoria.php" ><input type="hidden" name="nombre" value="'.$row['nombre'].'">';
 								  echo '</input> </br>';
 								  echo '<button type="submit" name="eliminar">eliminar</button></form>';
 								  echo $row['nombre'];

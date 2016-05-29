@@ -10,9 +10,8 @@
             <title>index</title> <!--titulo de la pagina -->
             <link rel="stylesheet" type="text/css" href="admin.css">  
       </head>
+            <a href="index.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
       <body>         
-            <header><a href="index.php"><img src="./imagenes/logo.png"></a>
-            </header>
             <?php
                   $link=conectar();
                   $usuario = new Usuario();

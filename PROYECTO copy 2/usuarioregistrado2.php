@@ -13,9 +13,9 @@ class Usuario
        
 	}
 
-	function iniciarsession($link,$nombreusuario,$clave)
+	function iniciarsession($link,$nomusuario,$clave)
 	{   
-	    $sql = "select * from admin where mail = '".$nombreusuario."' and password = '".$clave."'"; 
+	    $sql = "select * from admin where mail = '".$nomusuario."' and password = '".$clave."'"; 
 	    $result= mysqli_query($link,$sql);
 		$row=mysqli_fetch_assoc($result);
 		// excepsion//
@@ -43,7 +43,7 @@ class Usuario
 
         }
 			
-		$this->nombreusuario=$row['mail'];
+		$this->nomusuario=$row['mail'];
 		$this->clave=$row['password'];
 	   }
 
@@ -58,7 +58,7 @@ class Usuario
     
     // funciones que devuelven valores
 	function getNombreusuario()
-	 { return $this->nombreusuario;}
+	 { return $this->nomusuario;}
 	function getClave()
 	 { return $this->clave;}
 	 function getLogueado()
@@ -68,7 +68,7 @@ class Usuario
 	 
     // metodos que setean los valores
 	function setNombreusuario($val)
-    { $this->nombreusuario=$val;}
+    { $this->nomusuario=$val;}
 	function setidClave($val)
 	{ $this->clave=$val;}
 	function setLogueado($val)

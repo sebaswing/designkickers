@@ -21,9 +21,9 @@
 		<body>	
 		<div id="contenedorgeneral">
 		<div id="contenidoadmin">
-     	<form name="cargar" method="POST" action="funciones.php">
-				<input name="categoria" placeholder="ingrese categoria" />
-				<button name="nuevacategoria" type="submit" onclick="">cargar categoria</button>
+     	<form name="cargar" method="POST" onsubmit="return validarcategoria();" action="funciones.php" >
+				<input name="categoria" placeholder="ingrese categoria" value="">
+				<button name="nuevacategoria" type="submit">cargar categoria</button>
 		</form> 
 	
 			<?php  //  consulta con sql de todas las categorias de la tabla
@@ -37,9 +37,8 @@
 								  {
 								  echo '<tr>';
 								  // se crea un form y un input para pasar el valor a la funcion que elimina la categoria
-								  echo '<form name="formcate" method="POST" action="eliminarcategoria.php" 
-								  		onsubmit=" return validarcategoria();">
-								  		<input type="hidden" name="nombre" value="'.$row['nombre'].'">';
+								  echo '<form name="miformulario" method="POST" onsubmit="return confirmDel();" action="eliminarcategoria.php" >
+								  		<input type="hidden" name="nombre"  value="'.$row['nombre'].'">';
 								  echo '</input> </br>';
 								  echo '<button type="submit" name="eliminar">eliminar</button></form>';
 								  echo $row['nombre'];

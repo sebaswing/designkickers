@@ -19,7 +19,11 @@
 		  </div>
 		  <!--campo para el password-->
 		  <div class="form-group">
-		    <input name="clave" class="password" type="password" placeholder="Password">
+		    <input name="clave1" class="password" type="password" placeholder="Password">
+		  </div>
+		  <!--campo para repetir password-->
+		  <div class="form-group">
+		    <input name="clave2" class="password" type="password" placeholder=" RepetirPassword">
 		  </div>
 		  <!--el campo de nombre-->
 		  <div class="form-group">
