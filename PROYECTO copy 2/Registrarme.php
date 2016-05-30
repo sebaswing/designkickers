@@ -40,8 +40,20 @@
 		  </div>
 		  <!--el campo de Fecha de Nacimiento-->
 		  <div class="form-group">
-		  	<p>Cumpleaños<img id="present" src="FOTOS/present.png">:</p> 
-		    <input name="fechanac" class="fechaNac" type="date" placeholder="Fecha De Nacimiento" >
+		  <p>Cumpleaños<img id="present" src="FOTOS/present.png">:</p> 
+		    <input name="fechanac" class="fechaNac" type="date" max=
+		  	<?php  
+		  		date_default_timezone_set('America/Argentina/Buenos_Aires');
+				$fecha= new DateTime();
+				$año=$fecha->format('Y');
+				$anio=$año-18;
+				$mes= $fecha->format('m');
+				$dia=$fecha->format('d');
+				$escribir= $anio."-".$mes."-".$dia;
+				$nueva= date_create($escribir);
+				echo "\"".$nueva->format('Y-m-d')."\"";
+		  	?>
+			   placeholder="Fecha De Nacimiento" >
 		  </div>
 		  <!--el checkbox de condiciones-->
 		  <div class="checkbox">

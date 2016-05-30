@@ -1,6 +1,7 @@
 <?php
   include("conexion.php");
   include("consultacategoria.php");
+  include("consultaciudades.php")
 ?>
 <html>
 <head>
@@ -16,6 +17,17 @@
 		<li>Ubicacion:
 			<select name="Ubicacion" >	
 				<option value=""></option>
+				 <?php
+                               while($ciudad = mysqli_fetch_assoc( $ciudades)) //Obtiene una fila del resultado como un array asociativo
+                             {?>
+                              <option value="<?php echo $ciudad['id']?>">
+                                  <?php 
+                                        echo $ciudad['ciudad_nombre'] // imprime los nombres de las categorias de bd 
+                                  ?>
+                              </option>
+                              <?php 
+                                   }  
+                              ?>
 			</select>
 		</li>
 	    <form method="get" action="usuariocomun.php">
@@ -42,13 +54,44 @@
 	                  <button id="cerrar" action="logout.php">CERRAR SESION</button>
 	                  <br>
 	          </form>
-	          <form  method="get" action="premium.php">
-	                  <button action="logout.php">HACETE PREMIUM</button>
+	          <form  method="get" action="perfil.php">
+	                  <button action="logout.php">PERFIL</button>
+	                  <br>
+	          </form>
+	          <form  method="get" action="cargarcouch.php">
+	                  <button action="logout.php">ALTACOUCH</button>
 	                  <br>
 	          </form>
         </div>
 	</div>
-	<div id="previewcouch">
+	<?php  // trayendome lo de la tabla couch
+                      $link = conectar();
+                      $sql= 'SELECT c.mail nombre,
+                                    c.id_couch idCouch,
+                                    c.id_Categoria idcategoria,
+                                    c.fecha_publicacion fecha_publicacion,
+                                    c.fecha_cierre fecha_cierre, 
+                                    c.Ubicacion ubicacion,
+                                    c.capacidad capacidad,
+                                    c.descripcion descripcion,
+                                    c.titulo titulo
+                             FROM couch c';
+                      $resultado = mysqli_query($link , $sql);
+                            while ($fila = mysqli_fetch_assoc( $resultado))
+                             {
+                            	  echo $fila['nombre']  ?> </br> <?php 
+					 	   	      echo $fila['idCouch']   ?> </br> <?php 
+					 	   	      echo $fila['idcategoria']  ?> </br> <?php 
+					 	   	      echo $fila['fecha_publicacion']  ?> </br> <?php
+					 	   	       echo $fila['fecha_cierre']  ?> </br> <?php
+					 	   	        echo $fila['ubicacion']  ?> </br> <?php
+					 	   	         echo $fila['capacidad']  ?> </br> <?php 
+					 	   	          echo $fila['descripcion']  ?> </br> <?php
+					 	   	           echo $fila['titulo']  ?> </br> <?php
+					  }
+                          ?>
+
+	<!--<div id="previewcouch">
 	<ul>
 		<li>
 			<a href="#">
@@ -84,6 +127,6 @@
 	</ul>
 	
 	</div>
-</div> 
+</div> -->
 <footer> <p>CouchInn es una marca registrada. Todos los derechos reservados</p> </footer>
 </html>
