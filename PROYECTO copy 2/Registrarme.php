@@ -41,7 +41,7 @@
 		  <!--el campo de Fecha de Nacimiento-->
 		  <div class="form-group">
 		  <p>Cumpleaños<img id="present" src="FOTOS/present.png">:</p> 
-		    <input name="fechanac" class="fechaNac" type="date" max=
+		    <input name="fechanac" class="fechaNac" type="date" min="1985-01-01" max=
 		  	<?php  
 		  		date_default_timezone_set('America/Argentina/Buenos_Aires');
 				$fecha= new DateTime();

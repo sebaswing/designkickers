@@ -68,16 +68,16 @@
                       $link = conectar();
                       $sql= 'SELECT c.mail nombre,
                                     c.id_couch idCouch,
-                                    c.id_Categoria idcategoria,
+                                    c.id_categoria idcategoria,
                                     c.fecha_publicacion fecha_publicacion,
                                     c.fecha_cierre fecha_cierre, 
-                                    c.Ubicacion ubicacion,
+                                    c.ubicacion ubicacion,
                                     c.capacidad capacidad,
                                     c.descripcion descripcion,
                                     c.titulo titulo
                              FROM couch c';
                       $resultado = mysqli_query($link , $sql);
-                            while ($fila = mysqli_fetch_assoc( $resultado))
+                            while ($fila = mysqli_fetch_assoc($resultado))
                              {
                             	  echo $fila['nombre']  ?> </br> <?php 
 					 	   	      echo $fila['idCouch']   ?> </br> <?php 
@@ -89,7 +89,7 @@
 					 	   	          echo $fila['descripcion']  ?> </br> <?php
 					 	   	           echo $fila['titulo']  ?> </br> <?php
 					  }
-                          ?>
+    ?>
 
 	<!--<div id="previewcouch">
 	<ul>

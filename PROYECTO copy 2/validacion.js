@@ -30,7 +30,7 @@ function validarusu()
   function validarreg() // funcion para el formulario registrarse
 {	
 	var cvalido=/[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;  // para validar si es un correo electronico
-   	var nvalido=/\D[A-Za-zÁÉÍÓÚáéíóú]{3}/;// para validar que sean letras 
+   	var nvalido=/\D[A-Za-zÁÉÍÓÚáéíóú]{2}/;// para validar que sean letras 
     var patron=	/^([0-9])*$/;  // para validar digitos del 0 al 9
 
 	if ((document.formulario.correo.value.length == 0) || (! cvalido.test(document.formulario.correo.value))) 
@@ -56,15 +56,15 @@ function validarusu()
 						//sino se cumple la condicion
 						return false;
 				  }	 
-		  		if ((document.formulario.ape.value.length == 0) || ( !nvalido.test(document.formulario.ape.value)))
+		  		if ((document.formulario.ape.value.length == 0) || ( ! nvalido.test(document.formulario.ape.value)))
 				  {
 						alert("ingrese el Apellido valido");
 						document.formulario.ape.focus();
-						//sino se cumple la condicion
+						//sino se cumple la condicion porque putas no lee con menos de 4 caracteres ?
 						return false;
 				  }	 
 		  	else{
-		  		 if ((document.formulario.nom.value.length == 0) || ( !nvalido.test(document.formulario.nom.value))) 
+		  		 if ((document.formulario.nom.value.length == 0) || ( ! nvalido.test(document.formulario.nom.value))) 
 	      		 {
 		    		alert("ingrese el Nombre valido");
 		    		document.formulario.nom.focus();
