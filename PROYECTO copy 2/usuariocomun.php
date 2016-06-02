@@ -64,38 +64,82 @@
 	          </form>
         </div>
 	</div>
+	<div id="previewcouch">
+		<ul>
 	<?php  // trayendome lo de la tabla couch
                       $link = conectar();
-                      $sql= 'SELECT c.mail nombre,
+                      $sql= 'SELECT DISTINCT c.mail nombre,
                                     c.id_couch idCouch,
                                     c.id_categoria idcategoria,
-                                    c.fecha_publicacion fecha_publicacion,
                                     c.fecha_cierre fecha_cierre, 
-                                    c.ubicacion ubicacion,
-                                    c.capacidad capacidad,
+                                    c.id_ciudad ciudad,
                                     c.descripcion descripcion,
-                                    c.titulo titulo
-                             FROM couch c';
-                      $resultado = mysqli_query($link , $sql);
+                                    c.titulo titulo,
+                                    f.imagen foto,
+                                    f.type tipo,
+                                    u.numTarjeta tarjeta
+                             FROM couch c INNER JOIN fotografia f INNER JOIN usuario u
+                             WHERE (f.id_couch=c.id_couch and u.mail=c.mail) ORDER BY f.id_fotografia DESC';
+                      		$resultado = mysqli_query($link , $sql);
                             while ($fila = mysqli_fetch_assoc($resultado))
                              {
-                            	  echo $fila['nombre']  ?> </br> <?php 
-					 	   	      echo $fila['idCouch']   ?> </br> <?php 
-					 	   	      echo $fila['idcategoria']  ?> </br> <?php 
-					 	   	      echo $fila['fecha_publicacion']  ?> </br> <?php
-					 	   	       echo $fila['fecha_cierre']  ?> </br> <?php
-					 	   	        echo $fila['ubicacion']  ?> </br> <?php
-					 	   	         echo $fila['capacidad']  ?> </br> <?php 
-					 	   	          echo $fila['descripcion']  ?> </br> <?php
-					 	   	           echo $fila['titulo']  ?> </br> <?php
-					  }
+					 	   	    echo "<li>";
+					 	   	    //<img class="couch" src="mostrar.php?id=<?php echo $fila['idCouch']?("esto se borra")>">
+					 	   	    ?></br>
+					 	   	    <?php
+					 	   	    echo"<a href=\"#\">";
+					 	   	    ?></br>
+						 	   	<?php
+						 	   		echo "<div class=\"couch\" style=\"background-image:url(";
+						 	   		if($fila['tarjeta']!= NULL)
+						 	   		{
+							 	   	    
+							 	   	    echo"mostrar.php?id=";
+							 	   	    echo $fila['idCouch'];
+							 	   	   	
+						 	   	   	}
+						 	   	   	else
+						 	   	   	{
+						 	   	   		echo "FOTOS/logo.png";
+						 	   	   	}
+						 	   	   	echo"); background-repeat: no-repeat;\">";
+						 	   	?></br>
+						 	   	    <?php
+						 	   	    	
+						 	   	    	echo"<div class=\"titulocouch\">";
+						 	   	    ?>
+						 	   	    <?php
+						 	   	    	echo "<h1>";
+						 	   	    	echo $fila['titulo'];
+						 	   	    	echo "</h1>";
+						 	   	    ?>
+						 	   	    <?php
+						 	   	    	echo "<p>";
+						 	   	    	echo $fila['descripcion'];
+						 	   	    	echo "</p>";
+						 	   	    ?></br>
+						 	   	    <?php
+						 	   	    	echo"</div>";
+						 	   	    ?></br>
+					 	   	    <?php
+					 	   	   		echo"</div>";
+					 	   	   	?></br>
+					 	   	    <?php
+					 	   	    echo"</a>";
+					 	   	   	?></br>
+					 	   	    <?php
+					 	   	    echo"</li>";
+					  		}
     ?>
+    	</ul>
+    </div>
+</div>
 
-	<!--<div id="previewcouch">
+<!--<div id="previewcouch">
 	<ul>
 		<li>
 			<a href="#">
-			<div class="couch" style="background-image: url(FOTOS/logo.png); background-repeat: no-repeat;">
+			<div class="couch" style="background-image: url(FOTOS/logo.png); background-repeat: no-repeat;"> 
 				<div class="titulocouch">				
 				<h1>Casa Country Golf Club</h1>
 				<p>aca va la descripcion</p>

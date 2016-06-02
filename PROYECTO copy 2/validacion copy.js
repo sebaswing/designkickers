@@ -97,7 +97,7 @@ function validarusu()
 						else{
 							if (document.formulario.clave1.value != document.formulario.clave2.value)
 						  	   {
-								  alert("Las contraseñas no coinciden");
+								  alert("Las passwords no coinciden");
 								  return false;
 								} else 
 							{

@@ -62,7 +62,7 @@
 		    </label>
 		  </div>
 		  <button type="submit" style="" class="btn btn-default">Aceptar</button>
-		  <button type="submit" class="btn btn-default">Cancelar</button>
+		  	<a href="index.php" target="_self"><button type="submit" class="btn btn-default">Cancelar</button></a>
 		</form>
 	</div>
 </body>
