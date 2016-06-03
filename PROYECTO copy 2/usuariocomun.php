@@ -11,58 +11,58 @@
 </head>
 <div id="contenedorgeneral">
 	<div id="contenidobuscador">
-		<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
-	<div id="buscador">	
-	<ul>	
-		<li>Ubicacion:
-			<select name="Ubicacion" >	
-				<option value=""></option>
-				 <?php
-                               while($ciudad = mysqli_fetch_assoc( $ciudades)) //Obtiene una fila del resultado como un array asociativo
-                             {?>
-                              <option value="<?php echo $ciudad['id']?>">
-                                  <?php 
-                                        echo $ciudad['ciudad_nombre'] // imprime los nombres de las categorias de bd 
-                                  ?>
-                              </option>
-                              <?php 
-                                   }  
-                              ?>
-			</select>
-		</li>
-	    <form method="get" action="usuariocomun.php">
-			<li>Categorias:<select name="Categoria" >
-				 <option value=""></option>
-                             <?php
-                               while($cate = mysqli_fetch_assoc( $categorias)) //Obtiene una fila del resultado como un array asociativo
-                             {?>
-                              <option value="<?php echo $cate['id_categoria']?>">
-                                  <?php 
-                                        echo $cate['nombre'] // imprime los nombres de las categorias de bd 
-                                  ?>
-                              </option>
-                              <?php 
-                                   }  
-                              ?>
-				</select></li>	
-			<li><button>Buscar</button></li>
-		</form>
-	</ul>	
-	</div>
-		<div id="botons">
-			  <form  method="get" action="index.php" >
-	                  <button id="cerrar" action="logout.php">CERRAR SESION</button>
-	                  <br>
-	          </form>
-	          <form  method="get" action="perfil.php">
-	                  <button action="logout.php">PERFIL</button>
-	                  <br>
-	          </form>
-	          <form  method="get" action="couch.php">
-	                  <button action="logout.php">ALTA COUCH</button>
-	                  <br>
-	          </form>
-        </div>
+			<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
+		<div id="buscador">	
+		<ul>	
+			<li>Ubicacion:
+				<select name="Ubicacion" >	
+					<option value=""></option>
+					 <?php
+	                               while($ciudad = mysqli_fetch_assoc( $ciudades)) //Obtiene una fila del resultado como un array asociativo
+	                             {?>
+	                              <option value="<?php echo $ciudad['id']?>">
+	                                  <?php 
+	                                        echo $ciudad['ciudad_nombre'] // imprime los nombres de las categorias de bd 
+	                                  ?>
+	                              </option>
+	                              <?php 
+	                                   }  
+	                              ?>
+				</select>
+			</li>
+		    <form method="get" action="usuariocomun.php">
+				<li>Categorias:<select name="Categoria" >
+					 <option value=""></option>
+	                             <?php
+	                               while($cate = mysqli_fetch_assoc( $categorias)) //Obtiene una fila del resultado como un array asociativo
+	                             {?>
+	                              <option value="<?php echo $cate['id_categoria']?>">
+	                                  <?php 
+	                                        echo $cate['nombre'] // imprime los nombres de las categorias de bd 
+	                                  ?>
+	                              </option>
+	                              <?php 
+	                                   }  
+	                              ?>
+					</select></li>	
+				<li><button>Buscar</button></li>
+			</form>
+		</ul>	
+		</div>
+			<div id="botons">
+				  <form  method="get" action="index.php" >
+		                  <button id="cerrar" action="logout.php">CERRAR SESION</button>
+		                  <br>
+		          </form>
+		          <form  method="get" action="perfil.php">
+		                  <button action="logout.php">PERFIL</button>
+		                  <br>
+		          </form>
+		          <form  method="get" action="couch.php">
+		                  <button action="logout.php">ALTA COUCH</button>
+		                  <br>
+		          </form>
+        	</div>
 	</div>
 	<div id="previewcouch">
 		<ul>

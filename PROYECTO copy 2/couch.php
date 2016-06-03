@@ -91,9 +91,22 @@ $(window).load(function(){
 		<h2>Ingrese capacidad</h2>
 		<input name="capacidad" type="capacidad" />
 		<h2>Fecha Inicio</h2>
-		<input type="date" name="date" step="1" >
+		<input type="date" name="date" step="1" min=
+		<?php  
+			date_default_timezone_set('America/Argentina/Buenos_Aires');
+			$fecha= new DateTime();
+			echo "\"".$fecha->format('Y-m-d')."\">";
+		?>
 		<h2>Fecha Fin</h2>
-		<input type="date" name="datecierre" step="1" >
+		<input type="date" name="datecierre" step="1" min=
+		<?php  
+			date_default_timezone_set('America/Argentina/Buenos_Aires');
+			$fecha= new DateTime();
+			$dia= $fecha->format('d');
+			$mañana= date('Y-m')."-".++$dia;
+			$nueva= date_create($mañana);
+			echo "\"".$nueva->format('Y-m-d')."\">";
+		?>
 	</div>
 	<div id="formcouchder"> 
 		<div id="formcouchfoto" >
