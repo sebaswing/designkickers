@@ -11,7 +11,7 @@
 </head>
 <div id="contenedorgeneral">
 	<div id="contenidobuscador">
-		<a href="index.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
+		<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
 	<div id="buscador">	
 	<ul>	
 		<li>Ubicacion:
@@ -58,8 +58,8 @@
 	                  <button action="logout.php">PERFIL</button>
 	                  <br>
 	          </form>
-	          <form  method="get" action="cargarcouch.php">
-	                  <button action="logout.php">ALTACOUCH</button>
+	          <form  method="get" action="couch.php">
+	                  <button action="logout.php">ALTA COUCH</button>
 	                  <br>
 	          </form>
         </div>
