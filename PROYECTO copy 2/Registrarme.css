@@ -33,6 +33,12 @@ label
 
 }
 
+#present
+{
+  width: 85px;
+  height: 90px;
+}
+
 input{
     width: 250px;
     height: 40px;

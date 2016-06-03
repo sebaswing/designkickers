@@ -45,7 +45,7 @@ $(window).load(function(){
 </head>
 <body>
 <div id="contenidobuscador">
-		<img class="iniciologo" src="FOTOS/logo.png" alt="logo" >
+		<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo" ></a>
 		<form  method="get" action="index.php" >
 	          <button id="cerrar" action="logout.php">CERRAR SESION</button>
 	          <br>
@@ -63,7 +63,7 @@ $(window).load(function(){
 				 <?php
                      while($ciudad = mysqli_fetch_assoc( $ciudades)) //Obtiene una fila del resultado como un array asociativo
                      {?>
-                       <option value="<?php echo $ciudad['id']?>">
+                       <option value="<?php echo $ciudad['id_ciudad']?>">
                          <?php 
                              echo $ciudad['ciudad_nombre'] // imprime los nombres de las categorias de bd 
                              ?>
@@ -98,7 +98,8 @@ $(window).load(function(){
 	<div id="formcouchder"> 
 		<div id="formcouchfoto" >
 				<h2>ingrese descripcion</h2>
-				<textarea name="descripcion"></textarea><button type="submit"> enviar </button>
+				<textarea name="descripcion"></textarea>
+				<button type="submit" action="cargarcouch.php"> enviar </button>
 				<img id="imgSalida" width="50%" height="50%" src="" />
 				<br />
 				<input name="file-input" id="file-input" type="file" />

@@ -6,15 +6,15 @@
 	session_start();
 	$link = conectar();
 	$categoria=$_POST['categoria'];
-//	$mail=$_SESSION['mail'];
+	$mail=$_SESSION['mail'];
 	$titulo=$_POST['titulocouch'];
 	$fechapublicacion=$_POST['date'];
 	$fechacierre=$_POST['datecierre'];
 	$ubicacion=$_POST['ubicacion'];
 	$capacidad=$_POST['capacidad'];
 	$descripcion=$_POST['descripcion'];
-	$sql= "INSERT INTO couch(id_couch, mail, id_categoria, fecha_publicacion, fecha_cierre, ubicacion, capacidad, descripcion, titulo)
-	values('','prueba2@gmail.com','".$categoria."','".$fechapublicacion."','".$fechacierre."', '".$ubicacion."','".$capacidad."', '".$descripcion."', '".$titulo."')";
+	$sql= "INSERT INTO couch(id_couch, mail, id_categoria, fecha_publicacion, fecha_cierre, id_ciudad, capacidad, descripcion, titulo)
+	values('','".$mail."','".$categoria."','".$fechapublicacion."','".$fechacierre."', '".$ubicacion."','".$capacidad."', '".$descripcion."', '".$titulo."')";
 	//$insertar = mysqli_query($link , $sql) or die (mysqli_error($link));
 	$tempo = $link; 
 	$tempo->query($sql);
@@ -65,7 +65,7 @@
     }
 ?>
       <script>
-        window.location.href="couch.php";
+        window.location.href="usuariocomun.php";
       </script> 
    <?php
 ?>
