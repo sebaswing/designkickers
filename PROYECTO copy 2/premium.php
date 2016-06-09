@@ -1,3 +1,20 @@
+<?php  
+ // codigo agregado por julian ---------------------
+ session_start();
+ include("functions.php");
+ $t = login_check($mysqli);
+if( $t == 1) {
+//-----------------------------------------------------
+
+  
+    $link = conectar();
+
+    $sql = 'SELECT nombre FROM usuario WHERE numTarjeta is NOT NULL AND mail = "'.$_SESSION['mail'].'"';
+    $consulta= mysqli_query($link , $sql);
+    $row = mysqli_fetch_assoc($consulta);
+   if ($row == 0){ 
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,26 +22,48 @@
 	<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'>
 	<link rel="icon"  href="FOTOS/favicon.jpg" />
 	<link rel="stylesheet" type="text/css" href="estilo.css">
+	<title>Couch Inn!</title>
+	<script type="text/javascript" src="validacion.js"></script> <!--se procesa el archivo javascrip-->
 	<title>Couch Inn! PREMIUM</title>
 </head>
 <body>
 	<div class="contenedorPremium" align="center">
-			<img id="logoPremium" src="FOTOS/logo.png" >
+			<a href="usuariocomun.php"><img id="logoPremium" src="FOTOS/logo.png" ></a>
 			<div id="campos">
-				<form id="premium" method="post" name="regPremium">
+			    el costo es de : AR$50
+				<form id="premium"  name="formulario" onsubmit=" return validarpremium();" method="post" name="regPremium">
 					<!-- inicia el numero de tarjeta a validar-->
 					<p> ingresá numero de tarjeta de credito: </p>
-						<input type="text" name="numeroTarjeta">
+						<input type="text" name="numtarjeta">
 					
 					<!-- inicia la fecha de vencimiento de la tarjeta-->
 					<p>ingresá la fecha de vencimiento de la tarjeta:</p>
 						<input id="fechaTarjeta" type="date" name="fechaVencimento" >
 					<p>
-						<button type="submit" name="aceptar">Aceptar</button>
-					</p>
+					<p>ingrese digitos verificadores :</p>
+						<input type="" name="digitos" ><br/>
+						<button type="submit" name="aceptarP">Aceptar</button>
+						<button type="reset" onclick="location='perfil.php'" name="cancelar">Cancelar</button>
+					
 
 				</form>
 			</div>
 	</div>
 </body>
 </html>
+<?php } else { 
+	 echo "no tiene acceso a la seccion, esta siendo redirigido.";
+	 ?>
+	<script>
+        window.location.href="perfil.php";
+     </script>
+<?php } 
+
+} else {  ?>
+        <script>
+        alert("no ha iniciado sesion");
+        window.location.href="index.php";
+     </script> 
+     <?php
+}
+?>
