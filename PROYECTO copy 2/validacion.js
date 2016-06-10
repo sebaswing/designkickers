@@ -1,18 +1,17 @@
-// funcion para el formulario ingresar sesion
-function validarusu()
+// funcion para el formulario ingresar sesion del index;
+function validarusuindex()
 {
-   			var nvalido=/^\d/; // para validar que el primer caracter ingresado es una letra
 			var correovalido=/[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;  // para validar si es un correo electronico
-			if ((document.formulario2.usuario.value.length == 0) || ( ! correovalido.test(document.formulario2.usuario.value)))
+			if ((document.formulario2.correo.value.length == 0) || ( ! correovalido.test(document.formulario2.correo.value)))
 			{
 				alert(" ingrese su nombre de usuario correctamente ");
-				document.formulario2.usuario.focus();
+				document.formulario2.correo.focus();
 				//sino se cumple la condicion
 				return false;
 			}
 			else
 			{
-				if (document.formulario2.clave.value.length == 0)
+			if(document.formulario2.clave.value.length == 0)
 				 {
 					alert("ingrese la contraseña");
 					document.formulario2.clave.focus();
@@ -21,18 +20,47 @@ function validarusu()
 				 }
 				else
 				{
-					//alert("se ingreso correctamente los datos");
+					//alert("BIENVENIDO A COUCHIIN");
 				    return true;
 		        }
   			}
-  }
+ }
+
+function validarusuadmin()
+{
+			var correovalido=/[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;  // para validar si es un correo electronico
+			if ((document.formulario2.correo.value.length == 0) || ( ! correovalido.test(document.formulario2.correo.value)))
+			{
+				alert(" ingrese su nombre de usuario correctamente ");
+				document.formulario2.correo.focus();
+				//sino se cumple la condicion
+				return false;
+			}
+			else
+			{
+			if(document.formulario2.clave.value.length == 0)
+				 {
+					alert("ingrese la contraseña");
+					document.formulario2.clave.focus();
+					// sino se cumple la condicion
+					return false;
+				 }
+				else
+				{
+					//alert("BIENVENIDO A COUCHIIN");
+				    return true;
+		        }
+  			}
+ }
+
 
   function validarreg() // funcion para el formulario registrarse
 {	
 	var cvalido=/[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;  // para validar si es un correo electronico
    	var nvalido=/\D[A-Za-zÁÉÍÓÚáéíóú]{2}/;// para validar que sean letras 
+   	var valpin=/^[0-9a-zA-Z]{6}/;
     var patron=	/^([0-9])*$/;  // para validar digitos del 0 al 9
-
+   // var nvalido2=/^[0-9a-zA-Z]{6}/;
 	if ((document.formulario.correo.value.length == 0) || (! cvalido.test(document.formulario.correo.value))) 
 			     	{
 			     		alert(" ingrese un E-mail valido");
@@ -41,7 +69,7 @@ function validarusu()
 				    	return false;
 				  	}
 		  else{
-		  		if (document.formulario.clave1.value.length == 0)
+		  		if ((document.formulario.clave1.value.length == 0) || ( ! valpin.test(document.formulario.clave1.value)))
 		  		{
 					alert("ingrese la clave");
 					document.formulario.clave1.focus();
@@ -49,7 +77,7 @@ function validarusu()
 					return false;
 		  		}		  		 
 		   else{
-		  		if (document.formulario.clave2.value.length == 0)
+		  		if ((document.formulario.clave2.value.length == 0) || ( ! valpin.test(document.formulario.clave2.value)))
 				  {
 						alert("ingrese nuevamente la clave");
 						document.formulario.clave2.focus();
@@ -115,8 +143,8 @@ function validarusu()
 
 function validarcategoria()
 {
-	var nvalido=/\d/; // para validar que el primer caracter ingresado es una letra
-	if ((document.cargar.categoria.value.length == 0) || ( nvalido.test(document.cargar.categoria.value)))
+	var nvalido=/\D[A-Za-zÁÉÍÓÚáéíóú]{2}/; // para validar que el primer caracter ingresado es una letra
+	if ((document.cargar.categoria.value.length == 0) || (! nvalido.test(document.cargar.categoria.value)))
 			     	{
 			     		alert("ingrese una categoria valida");
 				    	document.cargar.categoria.focus();
@@ -131,8 +159,8 @@ function validarcategoria()
 
 function validarcategoria2()
 {
-	var nvalido=/\d/; // para validar que el primer caracter ingresado es una letra
-	if ((document.cargar.modcategoria.value.length == 0) || ( nvalido.test(document.cargar.modcategoria.value)))
+	var nvalido=/\D[A-Za-zÁÉÍÓÚáéíóú]{2}/; // para validar que el primer caracter ingresado es una letra
+	if ((document.cargar.modcategoria.value.length == 0) || (! nvalido.test(document.cargar.modcategoria.value)))
 			     	{
 			     		alert("ingrese una categoria valida");
 				    	document.cargar.modcategoria.focus();
@@ -152,3 +180,118 @@ function confirmDel() // para eliminar una categoria
   if (agree) return true ;
   return false;
 }
+
+function campovacio()
+{
+    var nvalido=/^[0-9a-zA-Z]{6}/;
+	if (document.formulario1.password.value.length == 0)
+	{
+			     		alert("ingrese una contraseña ");
+				    	document.formulario1.password.focus();
+				    	// sino se cumple la condicion
+				    	return false;
+	}
+	else if( (! nvalido.test(document.formulario1.password.value)))
+	{
+		alert("ingrese una contraseña valida de mas de 6 letras y/o numeros")
+		document.formulario1.password.focus();
+		// sino se cumple la condicion
+		return false; 
+	}
+	else	
+		//alert("se ingreso correctamente los datos");  (isNaN(parseInt(formulario.campo2.value))) esto es para q se solo numeros
+		return true;
+
+}
+
+function fecha()
+{
+	if (document.formulario2.fecha_nac.value.length == 0)
+	{
+			     		alert("ingrese una fecha");
+				    	document.formulario2.fecha_nac.focus();
+				    	// sino se cumple la condicion
+				    	return false;
+	}
+				  	else
+						//alert("se ingreso correctamente los datos");  (isNaN(parseInt(formulario.campo2.value))) esto es para q se solo numeros
+				    	return true;
+
+}
+
+function validarape()
+{
+	var nvalido=/\D[A-Za-zÁÉÍÓÚáéíóú]{2}/; // para validar que el primer caracter ingresado es una letra
+	if ((document.formulario3.apellido.value.length == 0) || (! nvalido.test(document.formulario3.apellido.value)))
+			     	{
+			     		alert("ingrese un apellido valido");
+				    	document.formulario3.apellido.focus();
+				    	// sino se cumple la condicion
+				    	return false;
+				  	}
+				  	else
+				  		
+						//alert("se ingreso correctamente los datos");  (isNaN(parseInt(formulario.campo2.value))) esto es para q se solo numeros
+				    	return true;
+	
+}
+
+function validarnom()
+{
+	var nvalido=/\D[A-Za-zÁÉÍÓÚáéíóú]{2}/; // para validar que el primer caracter ingresado es una letra
+	if ((document.formulario4.nombre.value.length == 0) || (! nvalido.test(document.formulario4.nombre.value)))
+			     	{
+			     		alert("ingrese un nombre valido");
+				    	document.formulario4.nombre.focus();
+				    	// sino se cumple la condicion
+				    	return false;
+				  	}
+				  	else
+				  		
+						//alert("se ingreso correctamente los datos");  (isNaN(parseInt(formulario.campo2.value))) esto es para q se solo numeros
+				    	return true;
+	
+}
+
+function validartel()
+{
+	var patron=	/^([0-9])*$/;  // para validar digitos del 0 al 9
+	if ((document.formulario5.telefono.value.length == 0) || ( ! patron.test(document.formulario5.telefono.value)))
+			     	{
+			     		alert("ingrese un telefono valido");
+				    	document.formulario5.telefono.focus();
+				    	// sino se cumple la condicion
+				    	return false;
+				  	}
+				  	else
+				  		
+						//alert("se ingreso correctamente los datos");  (isNaN(parseInt(formulario.campo2.value))) esto es para q se solo numeros
+				    	return true;
+	
+}
+
+function validarpremium()
+{
+	if (document.formulario.numtarjeta.value.length == 0)
+	{
+			     		alert("ingrese el numero de tarjeta ");
+				    	document.formulario.numtarjeta.focus();
+				    	// sino se cumple la condicion
+				    	return false;
+	}
+	else if(((!document.formulario.numtarjeta.value.length == 16)))
+	{
+		alert("ingrese una contraseña valida de mas de 6 letras y/o numeros");
+		document.formulario1.numtarjeta.focus();
+		// sino se cumple la condicion
+		return false; 
+	}
+	else	
+		//alert("se ingreso correctamente los datos");  (isNaN(parseInt(formulario.campo2.value))) esto es para q se solo numeros
+		return true;
+
+
+
+
+}
+

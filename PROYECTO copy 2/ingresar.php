@@ -13,10 +13,10 @@
       <body>         
            
             <div class="center">
-				<form id="formulario2" name="formulario2" method="post" onsubmit="return validarusu();" action="validandousuario2.php">
+				<form id="formulario2" name="formulario2" method="post" onsubmit="return validarusuadmin();" action="validandousuario2.php">
 				  <fieldset style="background-color:white">
 				    Usuario:<br>
-				    <input name="usuario" type="text" value="" >
+				    <input name="correo" type="text" value="" >
 				    <br>
 				    Clave:<br>
 				    <input name="clave" type="password" value="">

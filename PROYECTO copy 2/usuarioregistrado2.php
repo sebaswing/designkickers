@@ -26,7 +26,11 @@ class Usuario
                 }
 		     else{
 			 	$error= '<div class="mensajedeerror">
-			 				<p><h2>el nombre de usuario o la clave es incorrecta</h2></p>
+			 				<script>
+					        alert("el usuario que ingreso no existe");
+					        window.location.href="ingresar.php";
+					       </script>
+			 				<p><h2>el usuario que ingreso es incorrecto</h2></p>
 			 			 </div>';
 				throw new Exception ($error);
                 }

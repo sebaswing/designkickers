@@ -19,3 +19,13 @@
 	float: left;
 	top: 1%;		
 	}
+
+#botons button
+{
+	height: 22px;
+	width: 140px;
+}
+#contenidobuscador button
+{
+	float: right;
+}

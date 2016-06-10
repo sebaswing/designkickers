@@ -16,18 +16,22 @@ class Usuario
 	function iniciarsession($link,$nomusuario,$clave)
 	{   
 	    $sql = "select * from usuario where mail = '".$nomusuario."' and password = '".$clave."'"; 
-	    echo $sql;
 	    $result= mysqli_query($link,$sql);
 		$row=mysqli_fetch_assoc($result);
 		// excepsion//
 		try
 		{
-			if ($row){
+			if ($row)
+			{
                  $this->logueado = true;
-                }
+            }
 		     else{
 			 	$error= '<div class="mensajedeerror">
-			 				<p><h2>el nombre de usuario o la clave es incorrecta</h2></p>
+			 				<script>
+					        alert("el usuario que ingreso no existe");
+					        window.location.href="index.php";
+					       </script>
+			 				<p><h2>el usuario que ingreso es incorrecto</h2></p>
 			 			 </div>';
 				throw new Exception ($error);
                 }

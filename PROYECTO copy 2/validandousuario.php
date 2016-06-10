@@ -1,7 +1,13 @@
 <?php 
+  include('conexion.php');
    include('usuarioregistrado.php');
    session_start();
-   include('conexion.php');
+  
+
+   ///-------------------------------
+     $_SESSION['mail']= $_REQUEST['correo'];
+   $_SESSION['password']= $_REQUEST['clave'];
+   ///--------------------------------------
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,10 +24,10 @@
 
                        if($usuario->getlogueado() == 'logueado') 
                        {    
-                          //direccionar al backend
+                          //direccionar al usuariocomun.php
                           $_SESSION['log'] = true;
-
-                           header('Location: usuariocomun.php');
+                          
+                          header('Location: usuariocomun.php');
                        }
               ?>       
     </body>

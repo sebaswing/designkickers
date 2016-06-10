@@ -1,5 +1,12 @@
 <?php   
-  include("conexion.php");
+  //include("conexion.php");
+  //--------------------------------------
+ include("functions.php");
+  session_start();
+  $_SESSION['mail']= $_REQUEST['correo'];
+  $_SESSION['password']= $_REQUEST['clave1'];
+
+  //----------------------------------------------
   $link = conectar();
    $cor=$_POST['correo'];
    $cla=$_POST['clave1'];
@@ -23,10 +30,20 @@
      $insertarusu1 = mysqli_query($link, $sql);
     // if (!$insertarusu1) { die ("error en consulta: ".mysql_error());
     
+//---------------------------------------------------------------------------------------
+     $t = login_check($mysqli);
+     if( $t == 1) {
      ?>
-      <script>
-        alert("se inserto correctamente");
+     <script>
+        alert("BIENVENIDO A COUCHINN");
         window.location.href="usuariocomun.php";
-     </script> -->  
+     </script> 
      <?php
+   }else {
+?>
+ <script>
+        window.location.href="index.php";
+     </script>
+<?php
+   }
 ?>

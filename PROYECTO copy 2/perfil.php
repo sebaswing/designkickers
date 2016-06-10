@@ -1,21 +1,48 @@
 <?php
-include("conexion.php");
-session_start();
-?>
+//include("conexion.php");
+//session_start();
+ // codigo agregado por julian ---------------------
+ session_start();
+ include("functions.php");
+ $t = login_check($mysqli);
+if( $t == 1) {
+//-----------------------------------------------------
+    $link = conectar();
+
+    $sql = 'SELECT nombre FROM `usuario` WHERE numTarjeta is NOT NULL AND mail = "'.$_SESSION['mail'].'"';
+    $consulta= mysqli_query($link , $sql);
+    $row = mysqli_fetch_assoc($consulta);
+    //echo $row['nombre'];
+    
+ ?>
+
 
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="estiloperfil.css"> 
+	<meta charset="UTF-8"> <!-- Especifica la codificación de caracteres para el documento HTM-->
+	<link rel="stylesheet" type="text/css" href="estiloperfil.css"> 
 	<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'>
-	<script  src="js/jquery-1.10.2.min.js" type="text/javascript"></script> 
-	<script  src="modperfil.js" type="text/javascript"></script> 
+	<link rel="icon"  href="FOTOS/favicon.jpg" />
+	<script src="modperfil.js" type="text/javascript"></script> 
+	<script type="text/javascript" src="validacion.js"></script> <!--se procesa el archivo javascrip-->
+	<title>Couch Inn!</title>
 	</head>
 <div id="contenedorgeneral">
 	<div id="contenidobuscador">
-		<a href="index.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
-	   <form  method="get" action="index.php">
-             <button action="logout.php">CERRAR SESION</button>
-       </form>
+		<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
+		<div id="botons">
+		   <form  method="get" action="logout.php">
+	             <button>CERRAR SESION</button>
+	             </br>
+	       </form> 
+	       <?php
+	       if ($row == 0){ ?>
+	       <form  method="get" action="premium.php">
+		                  <button>HACETE PREMIUM!</button>
+		   </form>
+		   <?php }else { echo '<h2>Cuenta premium</h2>'; }
+		   ?>
+		</div>
 	</div>
 	<div id="perfilusuario">
 	<?php  //  consulta con sql de todas las categorias de la tabla
@@ -25,44 +52,55 @@ session_start();
 					$resultado = mysqli_query($link , $sql) or die (mysqli_error($link));  			
 					$row = mysqli_fetch_assoc($resultado);
 					?>
-						<table>		
-								  <tr>
-								  <form method="POST" id="formmail" action="modperfil.php">
+						<ul>		
+								  <li>
+								  <form method="POST"  id="formmail" action="modperfil.php">
 									<?php echo '<td><p>Usuario: </p></td><td><input type="hidden" value="'.$row['mail'].'" id="mail"> <p id="change0">'.$row['mail'].'</p></input></td>'; ?>
-							<!--		<button id="modificarmail" onclick="javascript:modificar()" value="modificar">modificar</button>    --->
+								
 									</form>
-									</tr>
-								    <tr>
-									<form method="POST" id="formpas" action="modperfil.php">
-									<?php echo '<td><p>password: </p></td> <td><input type="hidden" id="password" name="password" value="'.$row['password'].'"><p id="change1">****</p></input></td>'; ?>
-									<td><button id="modificarpas"  onclick="javascript:modificarpas1()" value="modificar">modificar</button></td>
+									</li>
+								    <li>
+									<form method="POST" name="formulario1" onsubmit=" return campovacio();" id="formpas" action="modperfil.php">
+									<?php echo '<p>password: </p><input  type="hidden" id="password" name="password" value="'.$row['password'].'"><p id="change1">****</p></input>'; ?>
+									<button id="modificarpas"  onclick="javascript:modificarpas1()" value="modificar">modificar</button>
 								  </form>
-								  </tr>
-								  <tr>
-								  <form method="POST" id="formfecha" action="modperfil.php">
-									<?php echo '<td><p>Fecha de nacimiento: </p></td><td><input type="hidden" id="fecha_nac" name="fecha_nac" value="'.$row['fecha_nac'].'"><p id="change2">'.$row['fecha_nac'].'</p></input></td>'; ?>
-									<td><button id="modificarfecha" onclick="javascript:modificarfecha1()" value="modificar">modificar</button></td>
+								  </li>
+								  <li>
+								  <form method="POST" name="formulario2" onsubmit=" return fecha();" id="formfecha" action="modperfil.php">
+									<?php echo '<p>Fecha de nacimiento: </p><input  type="hidden" id="fecha_nac"';
+										  date_default_timezone_set('America/Argentina/Buenos_Aires');
+										  $fecha= new DateTime();
+										  $año=$fecha->format('Y');
+										  $anio=$año-18;
+										  $mes= $fecha->format('m');
+										  $dia=$fecha->format('d');
+										  $escribir= $anio."-".$mes."-".$dia;
+										  $nueva= date_create($escribir);
+										  echo "min=\"".$nueva->format('Y-m-d')."\"";
+										  echo 'name="fecha_nac" value="'.$row['fecha_nac'].'"><p id="change2">'.$row['fecha_nac'].'</p></input>'; 
+									?>
+									<button id="modificarfecha" onclick="javascript:modificarfecha1()" value="modificar">modificar</button>
 								  </form>
-								  </tr>
-								  <tr>
-								  <form method="POST" id="formape" action="modperfil.php">
-									<?php echo '<td><p>Apellido: </p></td><td><input type="hidden" id="apellido" name="apellido" value="'.$row['apellido'].'"><p id="change3">'.$row['apellido'].'</p></input></td>'; ?>
-									<td><button id="modificarape" onclick="javascript:modificarape1()" value="modificar">modificar</button></td>
+								  </li>
+								  <li>
+								  <form method="POST" name="formulario3" onsubmit=" return validarape();" id="formape" action="modperfil.php">
+									<?php echo '<p>Apellido: </p><input type="hidden" id="apellido" name="apellido" value="'.$row['apellido'].'"><p id="change3">'.$row['apellido'].'</p></input>'; ?>
+									<button id="modificarape" onclick="javascript:modificarape1()" value="modificar">modificar</button>
 								  </form>
-								  </tr>
-								  <tr>
-								  <form method="POST" id="formnom" action="modperfil.php">
-									<?php echo '<td><p>Nombre: </p></td> <td><input type="hidden" id="nombre" name="nombre" value="'.$row['nombre'].'"><p id="change4">'.$row['nombre'].'</p></input></td>'; ?>
-									<td><button id="modificarnom" onclick="javascript:modificarnom1() "value="modificar">modificar</button></td>
+								  </li>
+								  <li>
+								  <form method="POST" name="formulario4" onsubmit=" return validarnom();" id="formnom" action="modperfil.php">
+									<?php echo '<p>Nombre: </p><input type="hidden" id="nombre" name="nombre" value="'.$row['nombre'].'"><p id="change4">'.$row['nombre'].'</p></input>'; ?>
+									<button id="modificarnom" onclick="javascript:modificarnom1() "value="modificar">modificar</button>
 								  </form>
-								  </tr>
-								  <tr>
-								  <form method="POST" id="formtel" action="modperfil.php">
-									<?php echo '<td><p>Telefono: </p></td><td><input type="hidden" id="telefono" name="telefono" value="'.$row['telefono'].'"><p id="change5">'.$row['telefono'].'</p></input></td>'; ?>
-									<td><button id="modificartel" onclick="javascript:modificartel1()" value="modificar">modificar</button></td>
+								  </li>
+								  <li>
+								  <form method="POST" name="formulario5" onsubmit=" return validartel();" id="formtel" action="modperfil.php">
+									<?php echo '<p>Telefono: </p><input type="hidden" id="telefono" name="telefono" value="'.$row['telefono'].'"><p id="change5">'.$row['telefono'].'</p></input>'; ?>
+									<button id="modificartel" onclick="javascript:modificartel1()" value="modificar">modificar</button>
 								 </form>
-								 </tr>
-						</table><br />
+								 </li>
+						</ul><br />
 								
 		
 	</div>
@@ -70,3 +108,12 @@ session_start();
 <footer> <p>CouchInn es una marca registrada. Todos los derechos reservados</p> </footer>
 
 </html>
+<?php } 
+else {  ?>
+        <script>
+        alert("no ha iniciado sesion");
+        window.location.href="index.php";
+     </script> 
+     <?php
+}
+?>
