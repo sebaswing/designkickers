@@ -1,7 +1,16 @@
 <?php  // backend de los administradores
-	//set_include_path("C:/xampp/htdocs/testProyecto/");
-	include("conexion.php");
-	session_start();
+	 // codigo agregado por julian ---------------------
+ include("functions.php");
+ session_start();
+ 
+ $t = login_checkadmin($mysqli);
+
+if( $t == 1) {
+//-----------------------------------------------------
+
+	//include("conexion.php");
+	//session_start();
+	//include("consultaeliminacion.php");
 
 	if ($_SESSION['log']){ 
 ?>
@@ -14,8 +23,8 @@
     	<img class="iniciologo" src="FOTOS/logo.png" alt="logo" >  
 	    <header> 
 
-	              <form id="" method="get" action="ingresar.php">
-	                  <button action="logout2.php">CERRAR SESION</button>
+	              <form id="" method="get" action="logout2.php">
+	                  <button>CERRAR SESION</button>
 	              </form>
 	    </header>
 		<body>	
@@ -29,8 +38,7 @@
 			<?php  //  consulta con sql de todas las categorias de la tabla
 					
 				   $link = conectar();
-				   $sql='SELECT nombre
-						  FROM categoria ';
+				   $sql='SELECT nombre, "1" as nota FROM categoria t inner join couch p on (t.id_categoria = p.id_categoria) UNION SELECT nombre, "0" as nota FROM categoria where nombre not in (SELECT nombre FROM categoria t inner join couch p on (t.id_categoria = p.id_categoria))';
 				   $categorias = mysqli_query($link , $sql);
 					echo '<table>';
 					 while ($row = mysqli_fetch_assoc($categorias))			
@@ -40,7 +48,11 @@
 								  echo '<form name="miformulario" method="POST" onsubmit="return confirmDel();" action="eliminarcategoria.php" >
 								  		<input type="hidden" name="nombre"  value="'.$row['nombre'].'">';
 								  echo '</input> </br>';
-								  echo '<button type="submit" name="eliminar">eliminar</button></form>';
+								 // if ($row['nota'] == 1){
+								 // echo '<button type="submit" disabled name="eliminar">eliminar</button></form>';
+								 // }else{
+								  	echo '<button type="submit" name="eliminar">eliminar</button></form>';
+								 // }
 								  echo $row['nombre'];
 								  echo '<form method="POST" action="modificarcategoria.php" ><input type="hidden" name="nombre" value="'.$row['nombre'].'">';
 								  echo '</input>';
@@ -57,3 +69,11 @@
 	 		<p>CouchInn es una marca registrada. Todos los derechos reservados</p> 
 	</div>
 	<?php } ?>
+	<?php } else {  ?>
+        <script>
+        alert("no esta autorizado a ingresar a la pagina.");
+        window.location.href="ingresar.php";
+     </script> 
+     <?php
+}
+?>

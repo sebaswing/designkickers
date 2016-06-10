@@ -1,16 +1,24 @@
-<!--
-	// falta validar campos vacios y conectar con las variables session
--->
 <?php  
-include("conexion.php");
+//include("conexion.php");
+//session_start();
+ // codigo agregado por julian ---------------------
+ session_start();
+ include("functions.php");
+ $t = login_check($mysqli);
+ //----------------------------------------------
 include("consultacategoria.php");
 include("consultaciudades.php");
-session_start();
+//----------------------------------------------
+if( $t == 1) {
+//-----------------------------------------------------
+
 ?>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="estilocouch.css"> 
 	<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'>
+	<link rel="icon"  href="FOTOS/favicon.jpg" />
+	<title>Couch Inn!</title>
 	<script  src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="validacioncouch.js"></script>
 	<script type="text/javascript">	
@@ -46,8 +54,8 @@ $(window).load(function(){
 <body>
 <div id="contenidobuscador">
 		<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo" ></a>
-		<form  method="get" action="index.php" >
-	          <button id="cerrar" action="logout.php">CERRAR SESION</button>
+		<form  method="get" action="logout.php" >
+	          <button id="cerrar">CERRAR SESION</button>
 	          <br>
 	    </form>
 </div>
@@ -85,7 +93,8 @@ $(window).load(function(){
                                   ?>
                               </option>
                               <?php 
-                                   }  
+                                   
+                                	}  
                               ?>
 				</select><br/>
 		<h2>Ingrese capacidad</h2>
@@ -95,8 +104,9 @@ $(window).load(function(){
 		<?php  
 			date_default_timezone_set('America/Argentina/Buenos_Aires');
 			$fecha= new DateTime();
-			echo "\"".$fecha->format('Y-m-d')."\">";
+			echo "\"".$fecha->format('Y-m-d')."\"";
 		?>
+		 placeholder="Fecha De Nacimiento" >
 		<h2>Fecha Fin</h2>
 		<input type="date" name="datecierre" step="1" min=
 		<?php  
@@ -124,3 +134,11 @@ $(window).load(function(){
 
 </body>
 </html>
+<?php } else {  ?>
+        <script>
+        alert("no ha iniciado sesion");
+        window.location.href="index.php";
+     </script> 
+     <?php
+}
+?>

@@ -36,7 +36,7 @@
 		  </div>
 		  <!--el campo de Telefono-->
 		  <div class="form-group">
-		  	<input  id="numeroTel" name="numeroTel" class="user" type="tel"  placeholder="Telefono"> 
+		  	<input  id="numeroTel" name="numeroTel" class="user" type="tel"  placeholder="Telefono" onsubmit="return validarTelefono()"> 
 		  </div>
 		  <!--el campo de Fecha de Nacimiento-->
 		  <div class="form-group">
@@ -62,7 +62,7 @@
 		    </label>
 		  </div>
 		  <button type="submit" style="" class="btn btn-default">Aceptar</button>
-		  	<button type="reset" class="btn btn-default" onclick="location='index.php'">Cancelar</button>
+		  <button type="reset" onclick="location='index.php'" class="btn btn-default">Cancelar</button>
 		</form>
 	</div>
 </body>

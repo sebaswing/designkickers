@@ -1,7 +1,12 @@
 <?php 
-   include('usuarioregistrado2.php');
-   session_start();
 	 include("conexion.php");
+    include('usuarioregistrado2.php');
+    session_start();
+  
+   ///-------------------------------
+     $_SESSION['mail']= $_REQUEST['correo'];
+   $_SESSION['password']= $_REQUEST['clave'];
+   ///--------------------------------------
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,8 +20,8 @@
             <?php
                   $link=conectar();
                   $usuario = new Usuario();
-                  $usuario->iniciarsession($link,$_POST['usuario'],$_POST['clave']);
-                  $_SESSION['usuario']= $_POST['usuario'];
+                  $usuario->iniciarsession($link,$_POST['correo'],$_POST['clave']);
+                  //$_SESSION['usuario']= $_POST['correo'];
 
                        if($usuario->getlogueado() == 'logueado') 
                        {

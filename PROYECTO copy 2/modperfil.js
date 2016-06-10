@@ -1,4 +1,11 @@
-
+ function insertAtras(e,i){ 
+        if(e.nextSibling){ 
+            e.parentNode.insertBefore(i,e.nextSibling); 
+        } else { 
+            e.parentNode.appendChild(i); 
+        }
+    }
+	
 		function modificarpas1()
 		{	
 		
@@ -26,8 +33,9 @@
 		{	
 		
 			var id = document.getElementById('fecha_nac');
-		if (id.type == "hidden") {	
-			id.type= "text";
+		if (id.type == "hidden") 
+		{	
+			id.type= "date";
 			var aca = document.getElementById('change2');
 				aca.parentNode.removeChild(aca);
 			var elemold = document.getElementById('modificarfecha');
