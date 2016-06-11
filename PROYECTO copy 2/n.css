@@ -1,0 +1,49 @@
+#foto img
+{
+	width: 350px;
+	height: 400px;
+	float: left;
+	padding: 5px;
+}
+
+#muestra img
+{
+	width: 135px;
+	height: 140px;
+}
+#muestra
+{
+	padding: 10px;
+}
+
+#preguntas
+{
+	width: 100%;
+}
+#general
+{
+	padding: 50px;
+}
+textarea
+{
+	width: 100%;
+}
+#pregunta
+{
+	background-color:#F7F8E0;
+}
+.iniciologo{
+	width: 215px;
+	height: 80px; 
+	float:left;
+	top:1%;
+}
+#contenidobuscador
+{
+	width: 100%;
+	height: 70px;
+	padding: 5px;
+	margin-bottom: 30px;
+	position: relative;
+	border-bottom: 1px solid gray;
+}
