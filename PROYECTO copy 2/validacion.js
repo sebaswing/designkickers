@@ -29,10 +29,10 @@ function validarusuindex()
 function validarusuadmin()
 {
 			var correovalido=/[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;  // para validar si es un correo electronico
-			if ((document.formulario2.correo.value.length == 0) || ( ! correovalido.test(document.formulario2.correo.value)))
+			if ((document.formulario2.usuario.value.length == 0) || ( ! correovalido.test(document.formulario2.usuario.value)))
 			{
 				alert(" ingrese su nombre de usuario correctamente ");
-				document.formulario2.correo.focus();
+				document.formulario2.usuario.focus();
 				//sino se cumple la condicion
 				return false;
 			}
@@ -272,26 +272,62 @@ function validartel()
 
 function validarpremium()
 {
+	var patron=	/^([0-9])/;  // para validar digitos del 0 al 9
 	if (document.formulario.numtarjeta.value.length == 0)
 	{
-			     		alert("ingrese el numero de tarjeta ");
-				    	document.formulario.numtarjeta.focus();
-				    	// sino se cumple la condicion
-				    	return false;
+			  alert("ingrese el numero de tarjeta ");
+			  document.formulario.numtarjeta.focus();
+			  // sino se cumple la condicion
+			 return false;
 	}
-	else if(((!document.formulario.numtarjeta.value.length == 16)))
+	else if (! patron.test(document.formulario.numtarjeta.value)) 
 	{
-		alert("ingrese una contraseña valida de mas de 6 letras y/o numeros");
-		document.formulario1.numtarjeta.focus();
+		alert("ingrese un numero de tarjeta de unicamente numeros")
+		document.formulario.numtarjeta.focus();
 		// sino se cumple la condicion
 		return false; 
 	}
-	else	
+	else
+		if (document.formulario.numtarjeta.value.length != 16)
+		 {
+		alert("ingrese un numero de tarjeta de 16 numeros")
+		document.formulario.numtarjeta.focus();
+		// sino se cumple la condicion
+		return false; 
+		}
+		else
+			if ((document.formulario.fechaVencimento.value.length == 0) || (! patron.test(document.formulario.fechaVencimento.value)))
+				  	{
+							alert("ingrese una fecha de fechaVencimento");
+							document.formulario.fechaVencimento.focus();
+							//sino se cumple la condicion
+							return false;
+				  	}
+		else
+			if (document.formulario.digitos.value.length == 0) 
+				  	{
+							alert("ingrese los digitos verificadores");
+							document.formulario.digitos.focus();
+							//sino se cumple la condicion
+							return false;
+				  	}
+			else
+				if (! patron.test(document.formulario.digitos.value))
+				{
+						alert("ingrese solo numeros");
+						document.formulario.digitos.focus();
+						//sino se cumple la condicion
+						return false;		
+				}
+		else
+		 if (document.formulario.digitos.value.length != 3)
+		 {
+		 	alert("ingrese como maximo 3 digitos");
+			document.formulario.digitos.focus();
+			//sino se cumple la condicion
+			return false;
+		 };
 		//alert("se ingreso correctamente los datos");  (isNaN(parseInt(formulario.campo2.value))) esto es para q se solo numeros
 		return true;
-
-
-
-
 }
 
