@@ -14,66 +14,61 @@ if( $t == 1) {
 ?>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="estilo.css"> 
-<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'> 
-<link rel="icon"  href="FOTOS/favicon.jpg" />
-<title>Couch Inn!</title>
+	<link rel="stylesheet" type="text/css" href="estilo.css"> 
+	<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'> 
+	<link rel="icon"  href="FOTOS/favicon.jpg" />
+	<title>Couch Inn!</title>
 </head>
 <div id="contenedorgeneral">
 	<div id="contenidobuscador">
 		<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
 	<div id="buscador">	
 	<ul>
-
 	<?php
 		if(isset($_GET['Ubicacion']))
 		{
 			$ciudadActual= $_GET['Ubicacion'];
 		}
 	?>
-
 	<form method="get" action="usuariocomun.php">
 		<li>Ubicacion:
 			<select name="Ubicacion" >	
 				<option value=""></option>
 				 <?php
-                            while($ciudad = mysqli_fetch_assoc($ciudades)) //Obtiene una fila del resultado como un array asociativo
-                             {?>
-                             		<?php
-		                             if($ciudadActual == $ciudad['id_ciudad'])
-		                             {
-
-		                             ?>
-		                              <option value="<?php echo $ciudad['id_ciudad']?>"selected>
-		                                  <?php 
-		                                        echo $ciudad['ciudad_nombre'] // imprime los nombres de las categorias de bd 
-		                                  ?>
-		                              </option>
-		                              <?php 
-		                          	  }
-
-		                          	  else
-		                          	  {
-		                          	  	?>
+                        while($ciudad = mysqli_fetch_assoc($ciudades)) //Obtiene una fila del resultado como un array asociativo
+                         {?>
+                            <?php
+		                         if($ciudadActual == $ciudad['id_ciudad'])
+		                         {
+		                         ?>
+			                           <option value="<?php echo $ciudad['id_ciudad']?>"selected>
+					                           <?php 
+					                                   echo $ciudad['ciudad_nombre'] // imprime los nombres de las categorias de bd 
+					                            ?>
+			                           </option>
+		                         <?php 
+		                          } // cierra el if
+		                          else
+		                          {
+		                          ?>
 		                          	  	<option value="<?php echo $ciudad['id_ciudad']?>">
 			                          	  	<?php
 			                          	  		echo $ciudad['ciudad_nombre'];
 			                          	  	?>
 		                          	  	</option>
-		                          	  <?php
-		                          	  }
-                              }  
-                 ?>
+		                          <?php
+		                          }  // cierra el else
+                              } // cierra el while  
+                			  ?>
 			</select>
 		</li>
 		<br>
-
-			<?php
-		if(isset($_GET['Categoria']))
-		{
+		<?php
+			if(isset($_GET['Categoria']))
+			{
 			$categoriaActual= $_GET['Categoria'];
-		}
-	?>
+			}
+			?>
 			<li>Categorias:
 			<select name="Categoria" >
 				 <option value=""></option>
@@ -103,10 +98,9 @@ if( $t == 1) {
                                     	}  
                                 }
                               ?>
-				</select></li>	
-				
+				</select></li>		
 			<li>
-			<input type="submit" method="get">
+			<input type="submit" method="get" >
 			</li>
 		</form>
 	</ul>	
@@ -125,6 +119,7 @@ if( $t == 1) {
 	                  <br>
 	          </form>
         </div>
+         <hr> <!-- esto es nuevo-->
 	</div>
 	<div id="previewcouch">
 		<ul>
@@ -217,10 +212,13 @@ if( $t == 1) {
 					 	   	    //<img class="couch" src="mostrar.php?id=<?php echo $fila['idCouch']?("esto se borra")>">
 					 	   	    ?></br>
 					 	   	    <?php
-					 	   	    echo"<a href=\"#\">";
+					 	   	    echo"<a href=\"perfilCouch.php?id=\">";
+	
 					 	   	    ?></br>
 						 	   	<?php
-						 	   		echo "<div class=\"couch\" style=\"background-image:url(";
+						 	   	  // aca va el direccionamiento al detalle del couch 
+						 	   		echo "
+						 	   			  <div class=\"couch\" style=\"background-image:url(";
 						 	   		if($fila['tarjeta']!= NULL)
 						 	   		{
 							 	   	    
@@ -232,7 +230,8 @@ if( $t == 1) {
 						 	   	   	{
 						 	   	   		echo "FOTOS/logo.png";
 						 	   	   	}
-						 	   	   	echo"); background-repeat: no-repeat;\">";
+						 	   	   	echo"); background-repeat: no-repeat;\">
+											";
 						 	   	?></br>
 						 	   	    <?php
 						 	   	    	
