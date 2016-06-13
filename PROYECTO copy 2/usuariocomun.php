@@ -212,9 +212,11 @@ if( $t == 1) {
 					 	   	    //<img class="couch" src="mostrar.php?id=<?php echo $fila['idCouch']?("esto se borra")>">
 					 	   	    ?></br>
 					 	   	    <?php
-					 	   	    echo"<a href=\"perfilCouch.php?id=\">";
+					 	   	    $aux = $fila['idCouch'];
+					 	   	    echo"<a href='perfilCouch.php?id=".$aux."'>;"
 	
-					 	   	    ?></br>
+					 	   	    ?>
+					 	   	    </br>
 						 	   	<?php
 						 	   	  // aca va el direccionamiento al detalle del couch 
 						 	   		echo "
