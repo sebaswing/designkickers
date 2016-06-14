@@ -218,16 +218,15 @@ if( $t == 1) {
 					 	   	    ?></br>
 					 	   	    <?php
 
-					 	   	    $aux = $fila['idCouch'];
-
-					 	   	    echo"<a href='perfilCouch.php?id=".$aux."<?php echo ".$fila['idCouch']."?>'>";
+					 	   	    echo"<a href='perfilCouch.php?id=".$fila['idCouch']."'>";
+					 	   	    	$_SESSION['idCouch']=$fila['idCouch'];
 	
 					 	   	    ?>
 					 	   	    </br>
 						 	   	<?php
 						 	   	  // aca va el direccionamiento al detalle del couch 
-						 	   		echo "
-						 	   			  <div class=\"couch\" style=\"background-image:url(";
+
+						 	   		echo " <div class=\"couch\" style=\"background-image:url(";
 						 	   		if($fila['tarjeta']!= NULL)
 						 	   		{
 							 	   	    

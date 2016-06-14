@@ -37,11 +37,8 @@ if( $t == 1) {
 	</div>
 	<!-- ACA VA LA CONSULTA PARA MOSTRAR EN EL DETALLE-->
 	<?php
-					$aux = $_GET['id_couch'];
-					if( isset($aux))
-						echo "hola";
-                     $link = conectar();
-                     $sql="SELECT  	c.id_couch idCouch,
+                    $link = conectar();
+                    $sql="SELECT  	c.id_couch idCouch,
                      				c.fecha_publicacion inicio,
                      				c.fecha_cierre cierre,
                      				c.capacidad capacidad,
@@ -53,10 +50,9 @@ if( $t == 1) {
                            INNER JOIN  categoria cat 
                            INNER JOIN ciudad ciu 
                            WHERE cat.id_categoria = c.id_categoria AND ciu.id_ciudad = c.id_ciudad
-                           AND c.id_couch = ".$aux;// falta poner el couch que es en cada uno 
+                           AND c.id_couch = ".$_GET['id'];// falta poner el couch que es en cada uno 
                   $couch= mysqli_query($link , $sql); //Envia una consulta MySQL
          		 //echo $sql;
-
                  while($fila = mysqli_fetch_assoc($couch))
                  {     ?>
                      
@@ -66,7 +62,7 @@ if( $t == 1) {
 				<img src = 
 				<?php
 					echo"\"";
-					echo "mostrar.php?id=".$fila['couch'];
+					echo "mostrar.php?id=".$fila['idCouch'];
 
 					echo"\"";
 				?>
