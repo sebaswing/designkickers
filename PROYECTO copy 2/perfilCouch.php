@@ -15,7 +15,9 @@ if( $t == 1) {
 <!DOCTYPE html>
 <html>
 <head>
+	<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'> 
 	<link rel="stylesheet" type="text/css" href="n.css">
+	<link rel="stylesheet" type="text/css" href="estilo.css">
 	<title></title>
 	<link rel="icon" href="FOTOS/favicon.jpg">
 </head>
@@ -35,65 +37,45 @@ if( $t == 1) {
 	</div>
 	<!-- ACA VA LA CONSULTA PARA MOSTRAR EN EL DETALLE-->
 	<?php
-                    // $id= $_GET['id_couch'];
-                     echo "entro";
+					$aux = $_GET['id_couch'];
+					if( isset($aux))
+						echo "hola";
                      $link = conectar();
-                     $sql='SELECT  	c.titulo titulo,  
-                                    c.id_couch idcouch,
-                                    c.descripcion descripcion,
-                                    c.fecha_publicacion fechap,
-                                    c.fecha_cierre  fechac,
-                                    c.id_couch idcouch,
-                                    c.mail mail,
-                                    cat.nombre categoria,
-                                    u.nombre nombre, 
-                                    u.mail mail,
-                                    u.telefono telefono
+                     $sql="SELECT  	c.id_couch idCouch,
+                     				c.fecha_publicacion inicio,
+                     				c.fecha_cierre cierre,
+                     				c.capacidad capacidad,
+                     				c.descripcion descripcion,
+                     				c.titulo titulo,
+                     				ciu.ciudad_nombre nombreCiudad,
+                     				cat.nombre nombreCategoria	
                            FROM couch c 
-                           INNER JOIN  categoria cat ON (c.id_categoria = cat.id_categoria)
-                           INNER JOIN  usuario u ON (c.mail = u.mail)
-                           WHERE c.id_couch = "2" ';
-                          // WHERE c.id_couch ='.$id.'';
+                           INNER JOIN  categoria cat 
+                           INNER JOIN ciudad ciu 
+                           WHERE cat.id_categoria = c.id_categoria AND ciu.id_ciudad = c.id_ciudad
+                           AND c.id_couch = ".$aux;// falta poner el couch que es en cada uno 
                   $couch= mysqli_query($link , $sql); //Envia una consulta MySQL
+         		 //echo $sql;
+
                  while($fila = mysqli_fetch_assoc($couch))
-                 {
-                         ?>
-                        <h1>
-                         <br> 
-                              <?php 
-                                   echo $fila['titulo']; // imprimo loft
-                              ?>
-                         </h1>
-                        <div class="descripcion">      
-                                          <?php
-                                              echo $fila['descripcion'];
-                                          ?>
-                         </div>
-                          </br>
-                         <div class="mail">
-                                  <?php 
-                                    echo $fila['mail'];
-                                  ?>
-                         </div>
-                         <div class="fechap">      
-                              <?php
-                                  echo $fila['fechap'];
-                               ?>
-                       </div>
-                        </br>
-                       <div class="fechac">
-                            <?php 
-                                   echo $fila['fechac'];
-                             ?>
-                        </div>
-                   <?php
-                   }
-            		?>
+                 {     ?>
+                     
 	<div id="general">
 		<div id="infoPerfil">
 			<div id="foto">
-				<img src="FOTOS/casa1.png"/>
-				<h2>TITULO:</h2>
+				<img src = 
+				<?php
+					echo"\"";
+					echo "mostrar.php?id=".$fila['couch'];
+
+					echo"\"";
+				?>
+				/>
+
+				<h2><?php 
+                       echo $fila['titulo']; // imprimo loft
+                    ?>
+				</h2>
 				<div id="muestra" >
 						<img src="FOTOS/casa2.png">
 						<img src="FOTOS/casa2.png">
@@ -112,9 +94,24 @@ if( $t == 1) {
 				Descripcion:
 				<br>
 				<div>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at scelerisque diam, a mollis quam. Aliquam ac magna quis turpis mattis semper. Nulla condimentum, dui id mollis condimentum, tortor felis ultrices nisi, nec aliquet sem mauris eget augue. In hac habitasse platea dictumst. Quisque sit amet lacus velit. Suspendisse gravida efficitur libero ut porttitor. Pellentesque at fermentum dui. Nam et urna ac dui laoreet volutpat consectetur ut eros. Integer venenatis, nisi sit amet vehicula cursus, sem justo vulputate erat, non convallis tortor nibh nec sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam mauris justo, ornare at sem et, tempor bibendum mi. Mauris tempus eleifend tortor, nec fermentum sapien eleifend porttitor. Proin id tellus eget ex accumsan tincidunt. Ut pellentesque bibendum quam.
+					<?php
+                          echo $fila['descripcion'];
+                     ?>
 				</div>
 				</p>
+				<p>
+				Capacidad:
+				<?php
+                     echo $fila['capacidad'];
+                ?>
+                </p>
+                <p>
+                Ubicacion:
+                <?php
+                	echo $fila['nombreCiudad'];
+                ?>
+                </p>
+
 					<hr>
 			</div>	
 		</div>
@@ -139,6 +136,9 @@ if( $t == 1) {
 
 		</div>	
 	</div>
+	<?php
+                   }
+            		?>
 </body>
 </html>
 <?php } else {  ?>
