@@ -29,7 +29,8 @@
 		    <label for="exampleInputPassword1"></label>
 		    <input name="clave" class="mail" type="password" class="form-control" id="exampleInputPassword1" placeholder=" CONTRASEÑA">
 		  </div>
-		  <button type="submit" class="btn btn-default">INGRESAR</button>
+		  <button type="submit" class="btn btn-default"><br>INGRESAR</button>
+		  <button type="reset" onclick=" confirmar(); location='index.php'" class="btn btn-default">RECUPERAR CLAVE</button>
 		</form>
 	</div>
 </body> 
