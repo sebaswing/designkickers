@@ -5,7 +5,7 @@
  include("functions.php");
  $t = login_check($mysqli);
 //--------------------------------------
-   include("consultacategoria.php");
+  include("consultacategoria.php");
   include("consultaciudades.php");
 //-----------------------------------------------------
 if( $t == 1) {
@@ -61,10 +61,8 @@ if( $t == 1) {
 			<div id="foto">
 				<img src = 
 				<?php
-					echo"\"";
 					echo "mostrar.php?id=".$fila['idCouch'];
 
-					echo"\"";
 				?>
 				/>
 
@@ -73,11 +71,18 @@ if( $t == 1) {
                     ?>
 				</h2>
 				<div id="muestra" >
-						<img src="FOTOS/casa2.png">
-						<img src="FOTOS/casa2.png">
-						<img src="FOTOS/loft1.png">
-						<img src="FOTOS/default.jpg">
-					</div>	
+						<?php
+		                    $link = conectar();
+							$sql = "SELECT id_fotografia FROM fotografia WHERE fotoPerfil =0 and id_couch = ".$fila['idCouch'];
+		                  	$couch= mysqli_query($link , $sql); //Envia una consulta MySQL
+			                 while($foto = mysqli_fetch_assoc($couch))
+			                 {    
+									echo "<img src='";
+									echo "mostrarFotosCouch.php?id=".$foto['id_fotografia'];
+									echo "' >";						 	
+							 }
+						?>
+				</div>	
 				<br>
 				<br>
 				<br>
