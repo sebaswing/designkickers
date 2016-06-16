@@ -122,10 +122,14 @@ $(window).load(function(){
 		<div id="formcouchfoto" >
 				<h2>ingrese descripcion</h2>
 				<textarea name="descripcion"></textarea>
-				<button type="submit" action="cargarcouch.php"> enviar </button>
-				<img id="imgSalida" width="50%" height="50%" src="" />
+				
+				<!--<img id="imgSalida" width="50%" height="50%" src="" />-->
 				<br />
 				<input name="file-input" id="file-input" type="file" />
+				<br>
+				<br>
+				<br>
+				<button type="submit" action="cargarcouch.php"> enviar </button>
 		</div>
     </div>
 
