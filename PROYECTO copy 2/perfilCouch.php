@@ -116,12 +116,21 @@ if( $t == 1) {
 					<hr>
 			</div>	
 		</div>
+
 		<br>
 		<br>	
 		<br>
+		<!--formulario para enviar a la pagina de solicitar couch -->
+		<form action="usuariocomun.php">
+			<button id="campos" style="width: 100%;" align="right" type="submit" name="solicitar" >Solicitar </button>
+		</form>
 		<br>
-		<textarea placeholder="ingresa tu pregunta" rows="10"></textarea>
-		<input type="submit" value="aceptar" name="realizarPregunta">
+		<br>
+		<!-- formulario para poder agregar las preguntas y respuestas del couch -->
+		<form align ="center" action="usuariocomun.php">
+			<textarea placeholder="ingresa tu pregunta" rows="10"></textarea>
+			<input type="submit" value="aceptar" name="realizarPregunta">
+		</form>
 		<div id="preguntas">
 			<p>
 			<fieldset>

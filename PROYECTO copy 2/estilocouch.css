@@ -18,9 +18,7 @@ h2 {
 	top: 1%;		
 	}
 
-	#formcouchfoto {
-		padding: 20%;
-	}
+	
 	
 	#formulariocouch {
 		margin: auto;
@@ -41,9 +39,16 @@ h2 {
 	border: 1px gray solid;
 	overflow: hidden;
 	}
+
+	#formcouchfoto textarea
+	{
+		width: 336px;
+    	height: 202px;
+	}
 	
 	#formcouchfoto {
 		left: 50%;
+		padding-left: 20%;
 	}
 	
 	#formcouchizq {
@@ -79,5 +84,11 @@ h2 {
 		float: right;
 		top: 5%;	
 	}
-	
+	.thumb
+	{
+     height: 150px;
+     width: 200px;
+     border: 1px solid #000;
+     margin: 10px 5px 0 0;
+}
 	
