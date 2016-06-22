@@ -33,9 +33,8 @@
 		{	
 		
 			var id = document.getElementById('fecha_nac');
-		if (id.type == "hidden") 
-		{	
-			id.type= "date";
+		if (id.type == "hidden") {	
+			id.type= "text";
 			var aca = document.getElementById('change2');
 				aca.parentNode.removeChild(aca);
 			var elemold = document.getElementById('modificarfecha');

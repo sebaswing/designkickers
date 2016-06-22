@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 16-06-2016 a las 18:20:46
+-- Tiempo de generación: 16-06-2016 a las 18:01:31
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.21
 
@@ -102,7 +102,7 @@ INSERT INTO `ciudad` (`id_ciudad`, `ciudad_nombre`) VALUES
 CREATE TABLE `comentarios` (
   `id_comentarios` int(11) NOT NULL,
   `id_couch` int(11) NOT NULL,
-  `fecha` date NOT NULL,
+  `fecha` datetime NOT NULL,
   `pregunta` varchar(80) NOT NULL,
   `respuesta` varchar(250) NOT NULL,
   `mail` varchar(100) NOT NULL
@@ -118,8 +118,8 @@ CREATE TABLE `couch` (
   `id_couch` int(11) NOT NULL,
   `mail` varchar(100) NOT NULL,
   `id_categoria` varchar(45) NOT NULL,
-  `fecha_publicacion` date NOT NULL,
-  `fecha_cierre` date DEFAULT NULL,
+  `fecha_publicacion` datetime NOT NULL,
+  `fecha_cierre` datetime DEFAULT NULL,
   `id_ciudad` int(4) NOT NULL,
   `capacidad` int(11) NOT NULL,
   `descripcion` varchar(250) DEFAULT NULL,
@@ -131,10 +131,10 @@ CREATE TABLE `couch` (
 --
 
 INSERT INTO `couch` (`id_couch`, `mail`, `id_categoria`, `fecha_publicacion`, `fecha_cierre`, `id_ciudad`, `capacidad`, `descripcion`, `titulo`) VALUES
-(1, 'test@mail.com', '1', '2016-01-01', '2016-01-03', 1, 3, 'Hermosa vista al mar', 'CASA PARA VERANEAR\r\n'),
-(2, 'juliancia@gmail.com', '1', '2016-03-15', '2016-07-14', 3, 4, 'loft confortable ', 'LOFT'),
-(3, 'sebas@mail.com', '2', '2016-06-04', '2016-06-30', 10, 5, 'ingrreso una nueva casa', 'CASA NUEVA\r\n'),
-(4, 'sebas@mail.com', '1', '2016-06-06', '2016-06-30', 10, 12, 'casa linda que nos rompio el ... codigo', 'CASA HIGH\r\n');
+(1, 'test@mail.com', '1', '2016-01-01 00:00:00', '2016-01-03 00:00:00', 1, 3, 'Hermosa vista al mar', 'CASA PARA VERANEAR\r\n'),
+(2, 'juliancia@gmail.com', '1', '2016-03-15 00:00:00', '2016-07-14 00:00:00', 3, 4, 'loft confortable ', 'LOFT'),
+(3, 'sebas@mail.com', '2', '2016-06-04 00:00:00', '2016-06-30 00:00:00', 10, 5, 'ingrreso una nueva casa', 'CASA NUEVA\r\n'),
+(4, 'sebas@mail.com', '1', '2016-06-06 00:00:00', '2016-06-30 00:00:00', 10, 12, 'casa linda que nos rompio el ... codigo', 'CASA HIGH\r\n');
 
 -- --------------------------------------------------------
 
@@ -219,8 +219,8 @@ CREATE TABLE `reserva` (
   `mail` varchar(100) DEFAULT NULL,
   `idcouch` varchar(45) NOT NULL,
   `estado` varchar(45) NOT NULL,
-  `fecha_inicio` date NOT NULL,
-  `fecha_fin` date NOT NULL,
+  `fecha_inicio` datetime NOT NULL,
+  `fecha_fin` datetime NOT NULL,
   `comment_couch` varchar(250) DEFAULT NULL,
   `puntaje_couch` varchar(250) DEFAULT NULL,
   `comment_huesped` varchar(250) DEFAULT NULL,

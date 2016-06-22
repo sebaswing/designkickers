@@ -5,7 +5,24 @@
 	float: left;
 	padding: 5px;
 }
+/* aca va el estilo de los botones */
+#contenidobuscador {
+	width: 100%;
+	height: 70px;
+	margin-bottom:30px;
+	padding: 10px;
+	position: relative;
+	border-bottom: 1px solid gray;
+	}
+#botons button
+{
+	height: 33px;
+	width: 140px;
+	clear: right;
+	float: right;
+}
 
+/* aca cierra el estilo de los botones */
 #muestra img
 {
 	width: 135px;
@@ -22,7 +39,7 @@
 }
 #general
 {
-	padding: 50px;
+	padding: 30px;
 }
 textarea
 {
@@ -37,13 +54,4 @@ textarea
 	height: 80px; 
 	float:left;
 	top:1%;
-}
-#contenidobuscador
-{
-	width: 100%;
-	height: 70px;
-	padding: 5px;
-	margin-bottom: 30px;
-	position: relative;
-	border-bottom: 1px solid gray;
 }

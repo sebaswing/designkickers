@@ -1,0 +1,14 @@
+.contenedormensajes {
+	position: relative;
+	border-spacing: 5px;
+	padding: 5px;
+	background-size: 360px 320px;
+	background-repeat: no-repeat;
+	width: 350px;
+	height: 310px;
+	text-align: center;
+	color: white;
+	font-family: 'Averia Sans Libre', cursive;
+	border-radius: 4px;
+	box-shadow: 2px 2px 5px #999;
+	}
