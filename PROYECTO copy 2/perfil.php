@@ -4,6 +4,8 @@
  // codigo agregado por julian ---------------------
  session_start();
  include("functions.php");
+ 
+  include("nuevasnotificaciones.php");
  $t = login_check($mysqli);
 if( $t == 1) {
 //-----------------------------------------------------
@@ -15,7 +17,6 @@ if( $t == 1) {
     //echo $row['nombre'];
     
  ?>
-
 
 <html>
 <head>
@@ -42,6 +43,21 @@ if( $t == 1) {
 		   </form>
 		   <?php }else { echo '<h2>Cuenta premium</h2>'; }
 		   ?>
+		     <!-- parte nueva                                              -->			  
+			  <form  method="get" action="notificacion.php">
+	                  <?php
+						$new = mysqli_fetch_assoc($nuevosmensajes);
+					  if ($new['cantidad'] == 0){
+						  echo "<button>Notificaciones</button>";
+					  }else {
+						  echo "<button>Notificaciones (".$new['cantidad'].")</button>";
+					  }
+					  
+					  ?>
+					  
+					  <br>
+	          </form>
+		<!--////////////-->	
 		</div>
 	</div>
 	<div id="perfilusuario">

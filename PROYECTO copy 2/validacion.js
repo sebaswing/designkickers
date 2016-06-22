@@ -289,6 +289,49 @@ function validarpremium()
 	else	
 		//alert("se ingreso correctamente los datos");  (isNaN(parseInt(formulario.campo2.value))) esto es para q se solo numeros
 		return true;
-
 }
-
+// validacion del modificar couch// 
+function valmodificar() 
+{
+   	var nvalido=/\D[A-Za-zÁÉÍÓÚáéíóú]{2}/;
+   	var patron=	/^([0-9])*$/;  // para validar digitos del 0 al 9
+   	var datePat = /^\d{1,2}(\.|)\d{3}(\.|)\d{3}[(-|)][0-9kK]{1}$/;
+	if ((document.modif.titulo.value.length == 0) || (! nvalido.test(document.modif.titulo.value)))
+	{
+			alert(" ingrese un titulo");
+		    document.modif.titulo.focus();
+		    return false;
+	}
+	else{ if ((document.modif.capacidad.value.length == 0) || ( ! patron.test(document.modif.capacidad.value)))
+		 {
+			alert("ingrese la capacidad");
+			document.modif.capacidad.focus();
+			//sino se cumple la condicion
+			return false;
+		 } 
+		else{ if ((document.modif.inicio.value.length == 0) || ( datePat.test(document.modif.inicio.value)))
+			{
+				alert("ingrese la fecha de inicio");
+				document.modif.inicio.focus();
+				//sino se cumple la condicion
+				return false;
+			}
+		else{ if ((document.modif.cierre.value.length == 0) || ( datePat.test(document.modif.cierre.value)))
+		{
+			alert("ingrese la fecha de cierre");
+			document.modif.cierre.focus();
+			//sino se cumple la condicion
+			return false;
+		}
+		else { if ((document.modif.descrip.value.length == 0) || (! nvalido.test(document.modif.descrip.value)))
+			{
+				alert("ingrese la descripcion");
+				document.modif.descrip.focus();
+				//sino se cumple la condicion
+				return false;
+			}
+		}
+		}
+		}
+		}		  		 	  		 
+}

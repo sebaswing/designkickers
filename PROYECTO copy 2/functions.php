@@ -1,28 +1,27 @@
 <?php
 include ("conexion.php");
 
-
-if(isset($_POST['aceptarP']))
-{
-     $link =conectar();
-     $tarj=$_POST['numtarjeta'];
-     $ven=$_POST['fechaVencimento'];
-     $verif=$_POST['digitos'];
-     $consulta = "UPDATE usuario SET numTarjeta = '".$tarj."', fechavencimiento = '".$ven."', codigoverificador = '".$verif."' WHERE mail = '".$_SESSION['mail']."'";
-     $usuario = mysqli_query($link,$consulta);
-     $consulta2="SELECT * FROM usuario WHERE mail ='". $_SESSION['mail']."' AND numTarjeta IS NOT NULL";
-     $usuario2= mysqli_query($link,$consulta2);
-     $row = mysqli_num_rows($usuario2);
-     if ($row == 1 ) 
-     {
-        ?>
-        <script>
-          alert("FELICITACIONES!. Se ha convertido en premium");
-          window.location.href="perfil.php";
-         </script> 
-         <?php
-     }
-}
+if(isset($_POST['aceptar'])){
+//function cargarpremium() {
+   $link = conectar();
+   $tarj=$_POST['numtarjeta'];
+   $ven=$_POST['fechaVencimento'];
+   $consulta = "UPDATE usuario set numTarjeta = '".$tarj."', fechavencimiento = '".$ven."'
+   where mail = '".$_SESSION['mail']."' ";
+   $usuario = mysqli_query($link , $consulta);
+   $consulta2="SELECT * FROM usuario WHERE mail ='". $_SESSION['mail']."' AND numTarjeta IS NOT NULL";
+   $usuario2= mysqli_query($link,$consulta2);
+   $row = mysqli_num_rows($usuario2);
+   if ($row == 1) {
+      ?>
+      <script>
+        alert("FELICITACIONES!. Se ha convertido en premium");
+        window.location.href="perfil.php";
+       </script> 
+       <?php
+   }
+ }
+//}
 function sec_session_start() {
 
     $session_name = 'sec_session_id';   // Configura un nombre de sesión personalizado.

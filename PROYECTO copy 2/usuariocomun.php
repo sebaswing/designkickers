@@ -5,8 +5,9 @@
  include("functions.php");
  $t = login_check($mysqli);
 //--------------------------------------
-   include("consultacategoria.php");
-  include("consultaciudades.php");
+    include("consultacategoria.php");
+    include("consultaciudades.php");
+    include("nuevasnotificaciones.php");
 //-----------------------------------------------------
 if( $t == 1) {
 //-----------------------------------------------------
@@ -118,11 +119,27 @@ if( $t == 1) {
 	                  <button>PUBLICA TU COUCH</button>
 	                  <br>
 	          </form>
+			  <!-- parte nueva                                              -->			  
+			  <form  method="get" action="notificacion.php">
+	                  <?php
+						$new = mysqli_fetch_assoc($nuevosmensajes);
+					  if ($new['cantidad'] == 0){
+						  echo "<button>Notificaciones</button>";
+					  }else {
+						  echo "<button>Notificaciones (".$new['cantidad'].")</button>";
+					  }
+					  
+					  ?>
+					  
+					  <br>
+	          </form>
+		<!-- ///////////////////////////////////////////-->	
         </div>
-         <hr> <!-- esto es nuevo-->
 	</div>
+
 	<div id="previewcouch">
 		<ul>
+		<hr> <!-- esto es para la linea debajo de los botones -->
 	<?php  // trayendome lo de la tabla couch
                       $link = conectar();
                       if(isset($_GET['Ubicacion']) or isset($_GET['Categoria']))

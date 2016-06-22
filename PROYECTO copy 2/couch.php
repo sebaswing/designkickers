@@ -11,6 +11,7 @@ include("consultaciudades.php");
 //----------------------------------------------
 if( $t == 1) {
 //-----------------------------------------------------
+
 ?>
 <html>
 <head>
@@ -20,7 +21,35 @@ if( $t == 1) {
 	<title>Couch Inn!</title>
 	<script  src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="validacioncouch.js"></script>
-	
+	<script type="text/javascript">	
+$(window).load(function(){
+
+ $(function() {
+  $('#file-input').change(function(e) {
+      addImage(e); 
+     });
+
+		 function addImage(e){
+		  var file = e.target.files[0],
+		  imageType = /image.*/;
+		
+		  if (!file.type.match(imageType))
+		   return;
+	  
+		  var reader = new FileReader();
+		  reader.onload = fileOnload;
+		  reader.readAsDataURL(file);
+		 }
+  
+		 function fileOnload(e) {
+		  var result=e.target.result;
+		  $('#imgSalida').attr("src",result);
+		 }
+    });
+  
+});
+
+</script>
 </head>
 <body>
 <div id="contenidobuscador">
@@ -80,7 +109,7 @@ if( $t == 1) {
 		 placeholder="Fecha De Nacimiento" >
 		<h2>Fecha Fin</h2>
 		<input type="date" name="datecierre" step="1" min=
-		<?php 
+		<?php  
 			date_default_timezone_set('America/Argentina/Buenos_Aires');
 			$fecha= new DateTime();
 			$dia= $fecha->format('d');
@@ -89,7 +118,7 @@ if( $t == 1) {
 			echo "\"".$nueva->format('Y-m-d')."\">";
 		?>
 	</div>
-	<div id="formcouchder"> 
+	<div id="formcouchder"> 
 		<div id="formcouchfoto" >
 				<h2>ingrese descripcion</h2>
 				<textarea name="descripcion"></textarea>
@@ -99,39 +128,14 @@ if( $t == 1) {
 				<input name="file-input" id="file-input" type="file" />
 				<br>
 				<br>
-				<output id="list"></output>
 				<br>
 				<button type="submit" action="cargarcouch.php"> enviar </button>
 		</div>
-    </div>
+    </div>
+
 	</form>
-	<script>
-              function archivo(evt) {
-                  var files = evt.target.files; // FileList object
-             
-                  // Obtenemos la imagen del campo "file".
-                  for (var i = 0, f; f = files[i]; i++) {
-                    //Solo admitimos imágenes.
-                    if (!f.type.match('image.*')) {
-                        continue;
-                    }
-             
-                    var reader = new FileReader();
-             
-                    reader.onload = (function(theFile) {
-                        return function(e) {
-                          // Insertamos la imagen
-                         document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
-                        };
-                    })(f);
-             
-                    reader.readAsDataURL(f);
-                  }
-              }
-             
-              document.getElementById('file-input').addEventListener('change', archivo, false);
-      </script>
 </div>
+
 </body>
 </html>
 <?php } else {  ?>
