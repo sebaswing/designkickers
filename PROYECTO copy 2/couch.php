@@ -80,7 +80,7 @@ if( $t == 1) {
 		 placeholder="Fecha De Nacimiento" >
 		<h2>Fecha Fin</h2>
 		<input type="date" name="datecierre" step="1" min=
-		<?php  
+		<?php 
 			date_default_timezone_set('America/Argentina/Buenos_Aires');
 			$fecha= new DateTime();
 			$dia= $fecha->format('d');

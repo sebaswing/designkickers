@@ -290,8 +290,5 @@ function validarpremium()
 		//alert("se ingreso correctamente los datos");  (isNaN(parseInt(formulario.campo2.value))) esto es para q se solo numeros
 		return true;
 
-
-
-
 }
 

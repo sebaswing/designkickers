@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="Registrarme.css">
 		<link rel="icon"  href="FOTOS/favicon.jpg" />
 		<script type="text/javascript" src="validacion.js"></script>
-		<title></title>
+		<title>Couch Inn!</title>
 </head>
 <body>
 	<div>

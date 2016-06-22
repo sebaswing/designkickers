@@ -1,3 +1,4 @@
+
 <html>
 <head>
 <meta charset="utf-8">
@@ -30,7 +31,7 @@
 		    <input name="clave" class="mail" type="password" class="form-control" id="exampleInputPassword1" placeholder=" CONTRASEÑA">
 		  </div>
 		  <button type="submit" class="btn btn-default"><br>INGRESAR</button>
-		  <button type="reset" onclick=" confirmar(); location='index.php'" class="btn btn-default">RECUPERAR CLAVE</button>
+		  <button type="reset" onclick="location='recuperar.php'" class="btn btn-default">RECUPERAR CLAVE</button>
 		</form>
 	</div>
 </body> 
