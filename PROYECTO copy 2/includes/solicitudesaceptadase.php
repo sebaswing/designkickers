@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	include("C:/xampp/htdocs/entrega/functions.php");
-	include("C:/xampp/htdocs/entrega/consultamensajes.php");
+	include("../functions.php");
+	include("../consultamensajes.php");
 	//aca se imprimen los estados de nuestras reservas solicitadas
 				while($lista = mysqli_fetch_assoc($mensajesmios))
                  {  if ($lista['estado'] == 'aceptada') {
