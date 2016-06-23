@@ -54,10 +54,16 @@ $(window).load(function(){
 <body>
 <div id="contenidobuscador">
 		<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo" ></a>
+	<div id="botons">
 		<form  method="get" action="logout.php" >
 	          <button id="cerrar">CERRAR SESION</button>
 	          <br>
 	    </form>
+	    <form  method="get" action="misCouch.php" >
+	          <button id="misCouch">MIS COUCH</button>
+	          <br>
+	    </form>
+</div>
 </div>
 <div id="formulariocouch">
 <form name="cargacouch" method="POST" onsubmit=" return validarcouch();" action="cargarcouch.php" enctype="multipart/form-data"> 
