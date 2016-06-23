@@ -11,7 +11,6 @@
 //-----------------------------------------------------
 if( $t == 1) {
 //-----------------------------------------------------
-
 ?>
 <html>
 <head>
@@ -153,12 +152,13 @@ if( $t == 1) {
 	                                    c.id_ciudad ciudad,
 	                                    c.descripcion descripcion,
 	                                    c.titulo titulo,
+	                                    c.eliminado eliminado,
 	                                    f.fotoperfil esPerfil,
 	                                    f.imagen foto,
 	                                    f.type tipo,
 	                                    u.numTarjeta tarjeta
 	                             FROM couch c INNER JOIN fotografia f INNER JOIN usuario u
-	                             WHERE (f.id_couch=c.id_couch  and f.fotoperfil=1 and u.mail=c.mail and c.id_ciudad='.$_GET['Ubicacion'].'
+	                             WHERE (f.id_couch=c.id_couch and c.eliminado=0 and f.fotoperfil=1 and u.mail=c.mail and c.id_ciudad='.$_GET['Ubicacion'].'
 	                             and c.id_categoria='.$_GET['Categoria'].') ORDER BY f.id_fotografia DESC';
 	                      }
 	                      else if($_GET['Ubicacion']!=null)
@@ -170,12 +170,13 @@ if( $t == 1) {
 	                                    c.id_ciudad ciudad,
 	                                    c.descripcion descripcion,
 	                                    c.titulo titulo,
+	                                     c.eliminado eliminado,
 	                                    f.fotoperfil esPerfil,
 	                                    f.imagen foto,
 	                                    f.type tipo,
 	                                    u.numTarjeta tarjeta
 	                             FROM couch c INNER JOIN fotografia f INNER JOIN usuario u
-	                             WHERE (f.id_couch=c.id_couch and f.fotoperfil=1 and u.mail=c.mail and c.id_ciudad='.$_GET['Ubicacion'].') ORDER BY f.id_fotografia DESC';
+	                             WHERE (f.id_couch=c.id_couch and c.eliminado=0 and f.fotoperfil=1 and u.mail=c.mail and c.id_ciudad='.$_GET['Ubicacion'].') ORDER BY f.id_fotografia DESC';
 	                      }
 	                      else if ($_GET['Categoria']!=null) 
 	                      {
@@ -186,12 +187,13 @@ if( $t == 1) {
 	                                    c.id_ciudad ciudad,
 	                                    c.descripcion descripcion,
 	                                    c.titulo titulo,
+	                                    c.eliminado eliminado,
 	                                    f.fotoperfil esPerfil,
 	                                    f.imagen foto,
 	                                    f.type tipo,
 	                                    u.numTarjeta tarjeta
 	                             FROM couch c INNER JOIN fotografia f INNER JOIN usuario u
-	                             WHERE (f.id_couch=c.id_couch and f.fotoperfil=1 and u.mail=c.mail and c.id_categoria='.$_GET['Categoria'].') ORDER BY f.id_fotografia DESC';
+	                             WHERE (f.id_couch=c.id_couch and f.fotoperfil=1 and c.eliminado=0 and u.mail=c.mail and c.id_categoria='.$_GET['Categoria'].') ORDER BY f.id_fotografia DESC';
 	                      }
 	                       else 
                       		{	
@@ -202,12 +204,13 @@ if( $t == 1) {
 		                                    c.id_ciudad ciudad,
 		                                    c.descripcion descripcion,
 		                                    c.titulo titulo,
+		                                    c.eliminado eliminado,
 		                                    f.fotoperfil esPerfil,
 		                                    f.imagen foto,
 		                                    f.type tipo,
 		                                    u.numTarjeta tarjeta
 		                             FROM couch c INNER JOIN fotografia f INNER JOIN usuario u
-		                             WHERE (f.id_couch=c.id_couch and f.fotoperfil=1 and u.mail=c.mail) ORDER BY f.id_fotografia DESC';
+		                             WHERE (f.id_couch=c.id_couch and c.eliminado=0 and f.fotoperfil=1 and u.mail=c.mail) ORDER BY f.id_fotografia DESC';
 	                       }
 		                  }
                       else 
@@ -219,12 +222,13 @@ if( $t == 1) {
 	                                    c.id_ciudad ciudad,
 	                                    c.descripcion descripcion,
 	                                    c.titulo titulo,
+	                                    c.eliminado eliminado,
 	                                    f.fotoperfil esPerfil,
 	                                    f.imagen foto,
 	                                    f.type tipo,
 	                                    u.numTarjeta tarjeta
 	                             FROM couch c INNER JOIN fotografia f INNER JOIN usuario u
-	                             WHERE (f.id_couch=c.id_couch and f.fotoperfil=1 and u.mail=c.mail) ORDER BY f.id_fotografia DESC';
+	                             WHERE (f.id_couch=c.id_couch and c.eliminado=0 and f.fotoperfil=1 and u.mail=c.mail) ORDER BY f.id_fotografia DESC';
                        }
                       		$resultado = mysqli_query($link , $sql) or 
                       		die (mysqli_error($sql));
