@@ -17,6 +17,7 @@ if( $t == 1) {
      		 mail = "'.$_SESSION['mail'].'" and id_couch ='.$_GET['idcouch'].' '; // ejemplo test o sebas
     $consulta= mysqli_query($link , $sql); // envio la consulta
     $row = mysqli_num_rows($consulta); 
+
    if ($row == 1){ 
 ?> 
 <!DOCTYPE html>
@@ -38,8 +39,8 @@ if( $t == 1) {
 	                  <br>
 	          </form>
 	         <!-- le paso el id en el action para la eliminacion --> 
-		      <form  method="GET"  action="eliminarcouch.php?action=eliminar&idcouch=<?php echo $_GET['id'] ?>">
-		        <input type="hidden" id="idcouch" name="idcouch" value="<?php echo $_GET['id'] ?>" >
+		      <form  method="GET"  action="eliminarcouch.php?idcouch=<?php echo $_GET['idcouch'] ?>">
+		        <input type="hidden" id="idcouch" name="idcouch" value="<?php echo $_GET['idcouch'] ?>" >
 		      	<input type="hidden" id="action" name="action" value="first" >
 		        <button  id="eliminar">ELIMINAR COUCH</button>
 		        <br>
@@ -54,7 +55,6 @@ if( $t == 1) {
 				{
 		   $link = conectar();
 		   $idactual=$_GET['idcouch']; // le asigno id actual a una variable para q me devuelva en la consulta
-		  
           // consulta para traerme todo lo actual de couch
 		   $sql="SELECT c.id_couch idCouch,
                     	c.fecha_publicacion inicio,

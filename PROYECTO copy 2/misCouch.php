@@ -31,7 +31,7 @@ if( $t == 1) {
 			$ciudadActual= $_GET['Ubicacion'];
 		}
 	?>
-	<form method="get" action="usuariocomun.php">
+	<form method="get" action="miscouch.php">
 		<li>Ubicacion:
 			<select name="Ubicacion" >	
 				<option value=""></option>
