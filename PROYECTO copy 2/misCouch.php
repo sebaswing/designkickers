@@ -20,11 +20,93 @@ if( $t == 1) {
 	<link rel="icon"  href="FOTOS/favicon.jpg" />
 	<title>Couch Inn!</title>
 </head>
-<div id="contenedorgeneral"> <!-- div contenido general-->
-	<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
-	<body>
-	<div id="contenidobuscador"> <!-- div contenido buscador-->
-	<div id="botons">  <!-- div boton-->
+<div id="contenedorgeneral">
+	<div id="contenidobuscador">
+		<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
+	<div id="buscador">	
+	<ul>
+	<?php
+		if(isset($_GET['Ubicacion']))
+		{
+			$ciudadActual= $_GET['Ubicacion'];
+		}
+	?>
+	<form method="get" action="usuariocomun.php">
+		<li>Ubicacion:
+			<select name="Ubicacion" >	
+				<option value=""></option>
+				 <?php
+                        while($ciudad = mysqli_fetch_assoc($ciudades)) //Obtiene una fila del resultado como un array asociativo
+                         {?>
+                            <?php
+		                         if($ciudadActual == $ciudad['id_ciudad'])
+		                         {
+		                         ?>
+			                           <option value="<?php echo $ciudad['id_ciudad']?>"selected>
+					                           <?php 
+					                                   echo $ciudad['ciudad_nombre'] // imprime los nombres de las categorias de bd 
+					                            ?>
+			                           </option>
+		                         <?php 
+		                          } // cierra el if
+		                          else
+		                          {
+		                          ?>
+		                          	  	<option value="<?php echo $ciudad['id_ciudad']?>">
+			                          	  	<?php
+			                          	  		echo $ciudad['ciudad_nombre'];
+			                          	  	?>
+		                          	  	</option>
+		                          <?php
+		                          }  // cierra el else
+                              } // cierra el while  
+                			  ?>
+			</select>
+		</li>
+		<br>
+		<?php
+			if(isset($_GET['Categoria']))
+			{
+			$categoriaActual= $_GET['Categoria'];
+			}
+			?>
+			<li>Categorias:
+			<select name="Categoria" >
+				 <option value=""></option>
+                             <?php
+                               while($cate = mysqli_fetch_assoc( $categorias)) //Obtiene una fila del resultado como un array asociativo
+                             	{
+                             		if($categoriaActual== $cate['id_categoria'])
+                             		{
+
+                             ?>
+			                              <option value="<?php echo $cate['id_categoria']?>"selected>
+			                                  <?php 
+			                                        echo $cate['nombre'] // imprime los nombres de las categorias de bd 
+			                                  ?>
+			                              </option>
+                              		<?php 
+                                    }
+                                    else
+                                    	{
+                               		?>
+                               				<option value= "<?php echo $cate['id_categoria']?>">
+                               				<?php
+                               						echo $cate['nombre'];
+                               				?>
+                               				</option>
+                              <?php
+                                    	}  
+                                }
+                              ?>
+				</select></li>		
+			<li>
+			<input type="submit" method="get" value="buscar" >
+			</li>
+		</form>
+	</ul>	
+	</div>
+		<div id="botons">
 			  <form  method="get" action="logout.php" >
 	                  <button id="cerrar">CERRAR SESION</button>
 	                  <br>
@@ -42,12 +124,14 @@ if( $t == 1) {
 					  }else {
 						  echo "<button>Notificaciones (".$new['cantidad'].")</button>";
 					  }
-					  ?> 
+					  
+					  ?>
+					  
 					  <br>
-	          </form>	
-        </div> <!-- cerrando el div botons-->
-        </div> <!-- cerrando el div contenido busca--> 
-     </div> <!-- cerrando el div contenido general-->
+	          </form>
+		<!-- ///////////////////////////////////////////-->	
+        </div>
+	</div>
 	<div id="previewcouch">
 		<ul>
 		<hr> <!-- esto es para la linea debajo de los botones -->
