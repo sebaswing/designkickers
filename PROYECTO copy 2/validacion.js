@@ -20,12 +20,11 @@ function validarusuindex()
 				 }
 				else
 				{
-					//alert("BIENVENIDO A COUCHIIN");
 				    return true;
 		        }
   			}
  }
-
+// funcion para el formulario ingresar sesion con admin;
 function validarusuadmin()
 {
 			var correovalido=/[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;  // para validar si es un correo electronico
@@ -53,8 +52,8 @@ function validarusuadmin()
   			}
  }
 
-
-  function validarreg() // funcion para el formulario registrarse
+// funcion para el formulario validar registro;
+  function validarreg() 
 {	
 	var cvalido=/[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;  // para validar si es un correo electronico
    	var nvalido=/\D[A-Za-zÁÉÍÓÚáéíóú]{2}/;// para validar que sean letras 
@@ -272,22 +271,37 @@ function validartel()
 
 function validarpremium()
 {
+    var patron=	/[0-9]{3}/;  // para validar digitos del 0 al 9
+
 	if (document.formulario.numtarjeta.value.length == 0)
 	{
-			     		alert("ingrese el numero de tarjeta ");
-				    	document.formulario.numtarjeta.focus();
-				    	// sino se cumple la condicion
-				    	return false;
+		alert("ingrese el numero de tarjeta ");
+	    document.formulario.numtarjeta.focus();
+		// sino se cumple la condicion
+		return false;
 	}
-	else if(((!document.formulario.numtarjeta.value.length == 16)))
+	else if ((!document.formulario.numtarjeta.value.length == 16) || ( ! patron.test(document.formulario.numtarjeta.value )))
 	{
-		alert("ingrese una contraseña valida de mas de 6 letras y/o numeros");
-		document.formulario1.numtarjeta.focus();
+		alert("ingrese un numero de tarjeta valida de solo 16 numeros");
+		document.formulario.numtarjeta.focus();
 		// sino se cumple la condicion
 		return false; 
 	}
+	else if (document.formulario.fechaVencimento.value.length == 0)
+ 	{
+		alert("ingrese la fecha de fechaVencimento de su tarjeta");
+		document.formulario.fechaVencimento.focus();
+		//sino se cumple la condicion
+		return false;
+	}
+	else if ((document.formulario.digitos.value.length == 0) || ( ! patron.test(document.formulario.digitos.value ))) 
+ 		{
+		alert("ingrese los digitos verificadores de la tarjeta de solo 3 digitos ");
+		document.formulario.digitos.focus();
+		//sino se cumple la condicion
+		return false;
+		}
 	else	
-		//alert("se ingreso correctamente los datos");  (isNaN(parseInt(formulario.campo2.value))) esto es para q se solo numeros
 		return true;
 }
 // validacion del modificar couch// 

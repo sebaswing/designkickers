@@ -8,10 +8,10 @@
  //----------------------------------------------
 include("consultacategoria.php");
 include("consultaciudades.php");
+include("nuevasnotificaciones.php");
 //----------------------------------------------
 if( $t == 1) {
 //-----------------------------------------------------
-
 ?>
 <html>
 <head>
@@ -21,56 +21,49 @@ if( $t == 1) {
 	<title>Couch Inn!</title>
 	<script  src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="validacioncouch.js"></script>
-	<script type="text/javascript">	
-$(window).load(function(){
-
- $(function() {
-  $('#file-input').change(function(e) {
-      addImage(e); 
-     });
-
-		 function addImage(e){
-		  var file = e.target.files[0],
-		  imageType = /image.*/;
-		
-		  if (!file.type.match(imageType))
-		   return;
-	  
-		  var reader = new FileReader();
-		  reader.onload = fileOnload;
-		  reader.readAsDataURL(file);
-		 }
-  
-		 function fileOnload(e) {
-		  var result=e.target.result;
-		  $('#imgSalida').attr("src",result);
-		 }
-    });
-  
-});
-
-</script>
+	
 </head>
 <body>
 <div id="contenidobuscador">
 		<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo" ></a>
-	<div id="botons">
-		<form  method="get" action="logout.php" >
-	          <button id="cerrar">CERRAR SESION</button>
-	          <br>
-	    </form>
-	    <form  method="get" action="misCouch.php" >
-	          <button id="misCouch">MIS COUCH</button>
-	          <br>
-	    </form>
-</div>
+		<div id="botons">
+			<form  method="get" action="logout.php" >
+		          <button id="cerrar">CERRAR SESION</button>
+		          <br>
+		    </form>
+		     <form  method="get" action="perfil.php">
+	                  <button>PERFIL</button>
+	                  <br>
+	          </form>	  
+			  <form  method="get" action="notificacion.php">
+	                  <?php
+						$auxnew = 0;
+						while($new = mysqli_fetch_assoc($nuevosmensajes)){
+							$auxnew = $auxnew + $new['cantidad'];
+						}
+						
+					  if ($auxnew == 0){
+						  echo "<button>Notificaciones</button>";
+					  }else {
+						  echo "<button>Notificaciones (".$auxnew.")</button>";
+					  }
+					  
+					  ?>
+					  
+					  <br>
+	          </form>
+		   <!-- <form  method="get" action="misCouch.php" >
+		          <button id="misCouch">MIS COUCH DESPUBLICADOS</button>
+		          <br>
+		    </form> -->
+	    </div>
 </div>
 <div id="formulariocouch">
 <form name="cargacouch" method="POST" onsubmit=" return validarcouch();" action="cargarcouch.php" enctype="multipart/form-data"> 
 	<div id="formcouchizq">
 		<h1>Crear un couch</h1><br>
 		<h2>ingrese un titulo</h2><br>
-		<input name="titulocouch" placeholder="Las casitas" />
+		<input name="titulocouch" placeholder="" />
 		<h2>ingrese ubicacion</h2>
 		<select name="ubicacion">
 			<option value=""></option>
@@ -124,7 +117,7 @@ $(window).load(function(){
 			echo "\"".$nueva->format('Y-m-d')."\">";
 		?>
 	</div>
-	<div id="formcouchder"> 
+	<div id="formcouchder"> 
 		<div id="formcouchfoto" >
 				<h2>ingrese descripcion</h2>
 				<textarea name="descripcion"></textarea>
@@ -134,14 +127,39 @@ $(window).load(function(){
 				<input name="file-input" id="file-input" type="file" />
 				<br>
 				<br>
+				<output id="list"></output>
 				<br>
 				<button type="submit" action="cargarcouch.php"> enviar </button>
 		</div>
-    </div>
-
+    </div>
 	</form>
+	<script>
+              function archivo(evt) {
+                  var files = evt.target.files; // FileList object
+             
+                  // Obtenemos la imagen del campo "file".
+                  for (var i = 0, f; f = files[i]; i++) {
+                    //Solo admitimos imágenes.
+                    if (!f.type.match('image.*')) {
+                        continue;
+                    }
+             
+                    var reader = new FileReader();
+             
+                    reader.onload = (function(theFile) {
+                        return function(e) {
+                          // Insertamos la imagen
+                         document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+                        };
+                    })(f);
+             
+                    reader.readAsDataURL(f);
+                  }
+              }
+             
+              document.getElementById('file-input').addEventListener('change', archivo, false);
+      </script>
 </div>
-
 </body>
 </html>
 <?php } else {  ?>

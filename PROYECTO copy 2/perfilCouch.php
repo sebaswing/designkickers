@@ -31,12 +31,12 @@ if( $t == 1) {
 	                  <br>
 	          </form>  
 		            <!-- le paso el id en el action para la modificacion --> 
-		          	<form  method="GET"  action="modificarcouch.php?action=editar&idcouch=<?php echo $_GET['id'] ?>">
+		  <!--        	<form  method="GET"  action="modificarcouch.php?action=editar&idcouch=<?php echo $_GET['id'] ?>">
 		          	<input type="hidden" id="idcouch" name="idcouch" value="<?php echo $_GET['id'] ?>" >
 		           <input type="hidden" id="action" name="action" value="first" >
 		             <button  id="modificar"   >MODIFICAR COUCH</button>
 		             <br>
-	          </form>
+	          </form> -->
 			    <!-- parte nueva                                              -->			  
 			  <form  method="get" action="notificacion.php">
 	                  <?php
@@ -138,10 +138,29 @@ if( $t == 1) {
 			if ($fila['mail'] != $_SESSION['mail']){
 			echo "<form  method='POST' action='solicitarcouch.php?id=".$fila['idCouch']."'>";
 			echo "<input type='hidden' id='idcouch' name='idcouch' value='".$fila['idCouch']."'/>"; ?> 			 
+	        <input type="hidden" id="action" name="action" value="first" >
 	        <button id="campos"  align="right" type="submit" name="solicitar" >Solicitar </button>
+
 	        <!--<button>Solicitar Couch</button>-->
 			<br>
 			</form>
+			<?php } else { ?>
+			<!--</form>-->  
+		            <!-- le paso el id en el action para la modificacion --> 
+		          	<form  method="GET"  action="modificarcouch.php?action=editar&idcouch=<?php echo $_GET['id'] ?>">
+		          	<input type="hidden" id="idcouch" name="idcouch" value="<?php echo $_GET['id'] ?>" >
+		           <input type="hidden" id="action" name="action" value="first" >
+		             <button  id="campos"  align="right" type="submit"   >Modificar Couch</button>
+		             <br>
+	          </form>
+	          </form>  
+		            <!-- le paso el id en el action para la modificacion --> 
+		          	<form  method="GET"  action="republicarcouch.php?idcouch=<?php echo $_GET['id'] ?>">
+		          	<input type="hidden" id="idcouch" name="idcouch" value="<?php echo $_GET['id'] ?>" >
+		           	<input type="hidden" id="action" name="action" value="editar" >
+		             <button  id="campos"  align="right" type="submit">Republicar Couch</button>
+		             <br>
+	          </form>
 				 <?php } } ?>			
 		<br>
 		<br>
@@ -165,7 +184,7 @@ if( $t == 1) {
 	</div>
 </body>
 </html>
-<?php } else {  ?>
+<?php  } else {  ?>
         <script>
         alert("no ha iniciado sesion");
         window.location.href="index.php";

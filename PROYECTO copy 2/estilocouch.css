@@ -91,4 +91,10 @@ h2 {
      border: 1px solid #000;
      margin: 10px 5px 0 0;
 }
+#botons button
+{
+	height: 33px;
+	width: 140px;
+	clear: right;
+}
 	

@@ -101,7 +101,7 @@ if( $t == 1) {
                               ?>
 				</select></li>		
 			<li>
-			<input type="submit" method="get" value="buscar" >
+			<input type="submit" method="get" value="Buscar" >
 			</li>
 		</form>
 	</ul>	
@@ -115,14 +115,22 @@ if( $t == 1) {
 	                  <button>PERFIL</button>
 	                  <br>
 	          </form>
+	          <form  method="get" action="couch.php">
+	                  <button>PUBLICA TU COUCH</button>
+	                  <br>
+	          </form>
 			  <!-- parte nueva                                              -->			  
 			  <form  method="get" action="notificacion.php">
 	                  <?php
-						$new = mysqli_fetch_assoc($nuevosmensajes);
-					  if ($new['cantidad'] == 0){
+						$auxnew = 0;
+						while($new = mysqli_fetch_assoc($nuevosmensajes)){
+							$auxnew = $auxnew + $new['cantidad'];
+						}
+						
+					  if ($auxnew == 0){
 						  echo "<button>Notificaciones</button>";
 					  }else {
-						  echo "<button>Notificaciones (".$new['cantidad'].")</button>";
+						  echo "<button>Notificaciones (".$auxnew.")</button>";
 					  }
 					  
 					  ?>
@@ -131,6 +139,16 @@ if( $t == 1) {
 	          </form>
 		<!-- ///////////////////////////////////////////-->	
         </div>
+		<div id="header">
+		<nav> <!-- Aqui estamos iniciando la nueva etiqueta nav -->
+				<ul class="nav">
+									<!--	<li><a href="todosmiscouch.php">Mis Couch</a></li> -->
+					<li><a href="couchpublicados.php">Mis Couch publicados</a></li>
+					<li><a href="misCouch.php">Mis Couch despublicados</a></li>
+					<li><a href="usuariocomun.php">Todos los Couch</a></li>
+				</ul>
+			</nav><!-- Aqui estamos cerrando la nueva etiqueta nav -->
+		</div>
 	</div>
 	<div id="previewcouch">
 		<ul>

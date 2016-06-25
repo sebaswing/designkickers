@@ -39,12 +39,21 @@ if( $t == 1) {
 	                  <br>
 	          </form>
 	         <!-- le paso el id en el action para la eliminacion --> 
+	         <?php 
+	         	$link1 = conectar();
+     			$sql101 = "SELECT mail FROM couch WHERE  
+     		 			mail = '".$_SESSION['mail']."' and id_couch = '".$_GET['idcouch']."' and eliminado = 0 "; // ejemplo test o sebas
+    			$consulta101= mysqli_query($link1 , $sql101); // envio la consulta
+    			$row101 = mysqli_num_rows($consulta101);
+    			if ($row101 == 1){
+	         ?>
 		      <form  method="GET"  action="eliminarcouch.php?idcouch=<?php echo $_GET['idcouch'] ?>">
 		        <input type="hidden" id="idcouch" name="idcouch" value="<?php echo $_GET['idcouch'] ?>" >
 		      	<input type="hidden" id="action" name="action" value="first" >
 		        <button  id="eliminar">ELIMINAR COUCH</button>
 		        <br>
 	          </form>
+	          <?php } ?>
         </div>
 	</div>
 	</br>
@@ -77,29 +86,31 @@ if( $t == 1) {
 		   }
 			else{
     			 ?>
-    			 <!-- formulario con los datos actuales -->
-    			 Modificar:
+    			 <!-- formulario con los datos que se van a editar  -->
+    			
            		<form name="modif" onsubmit="return valmodificar();"  
            			 action=" modificarcouch.php?action=editar&idcouch=<?php echo $idactual; ?>" 
            			 method="POST" enctype="multipart/form-data">
            		<div style= 'text-align:center'>
+           		<h2> Modificar datos de mi Couch:</h2>
+           		<br>
+           				<h1>Titulo:
 					  	 <input name='titulo' id="titulo" type="text" value="<?php echo $fila['titulo'] ?>"/> 
-					  	<!-- <button type='submit' name='modificartituloviejo'>modificar</button> <br>	-->
-					  	 <br>
+					  	
+					  	</h1> <br>
+					  	<h1>Capacidad:
 						 <input type='text' name='capacidad'id="capacidad"  value="<?php echo $fila['capacidad'] ?>">
-						  <!--<button type='submit' name='modificarcapacidadvieja'>modificar</button> <br>
-						  -->	
-						 <br>
-						 <input type='text' name='inicio' id="inicio"  value="<?php echo $fila['inicio'] ?>">
-						  <!--<button type='submit' name='modificarinicioviejo'>modificar</button> <br>	-->
-						 <br>
-						 <input type='text' name='cierre' id="cierre"  value="<?php echo $fila['cierre'] ?>">
-						  <!--<button type='submit' name='modificartituloviejo'>modificar</button> <br>	-->
-						 <br>
-						 Descripcion: <textarea  name="descrip"> <?php echo $fila['descripcion'] ?> </textarea> <br>
-						  
-						 <br>
-						 Ciudad: 
+						 </h1> <br> 
+						<h1> Fecha de Inicio:	
+						 <input type='date' name='inicio' id="inicio"  value="<?php echo $fila['inicio'] ?>">
+						 
+						 </h1> <br>
+						 <h1>Fecha de Fin:
+						 <input type='date' name='cierre' id="cierre"  value="<?php echo $fila['cierre'] ?>">
+						 </h1> <br>
+						 <h1>Descripcion:</h1> <br>
+						  <textarea  name="descrip"> <?php echo $fila['descripcion'] ?> </textarea> <br>
+						 <h1>Ciudad: 
 						 <select name="ciudad" id="ciudad">
 							   <?php
 										$link=conectar();
@@ -121,9 +132,9 @@ if( $t == 1) {
 							  } 
 							  ?>
 					   </select>
+						</h1>
 						<br>
-						<br>
-						 Categoria: 
+						<h1> Categoria: 
 						 <select name="categoria" id="categoria">
 							   <?php
 										$link=conectar();
@@ -145,12 +156,18 @@ if( $t == 1) {
 							  } 
 							  ?>
 					   </select>	
-						 <br>
+						 </h1> <br>
 						 <input type='hidden' name='idcouch' value='".$_GET['idcouch']."'>
 						 <input type='hidden' name='action' value='editar'>
 					     <br>
-					     Imagen (solo cargar si desea modificarla) :
-						 <input type='file' name='foto'> <br> <br>	
+					    <h1> Imagen (solo cargar si desea modificarla) :</h1> <br>
+						 <input name="file-input" id="file-input" type="file" /> <br> <br>
+
+						 <!-- ACA ME TRAIGO LO QUE TIENE LA IMAGEN ACTUAL DE PERFIL -->
+						<!--  <?php 
+						 		$link = conectar();
+						 		$sql = "SELECT f.id_couch FROM fotografia f  WHERE id_couch ="
+						 ?>	-->
 						 <button type='submit'>modificar</button>
 						 <button type="reset">Cancelar</button>		
 			 </div>
@@ -186,6 +203,53 @@ if( $t == 1) {
 									titulo = '$titulo' 
 							 WHERE id_couch = $id";
 					$result = mysqli_query($link, $query);
+					//----- cargar una foto nueva -----------------------
+					$quer = "SELECT id_fotografia FROM fotografia WHERE id_couch = ".$_GET['idcouch']." and fotoPerfil = 1";
+					$result2 = mysqli_query($link, $quer);
+					$imagenid = mysqli_fetch_assoc($result2);
+					$permitidos = array("image/jpg", "image/jpeg", "image/gif", "image/png");
+					 $limite_kb = 16384;
+						 
+						    if (in_array($_FILES['file-input']['type'], $permitidos) && $_FILES['file-input']['size'] <= $limite_kb * 1024)
+						    {
+						 
+						        // Archivo temporal
+						        $imagen_temporal = $_FILES['file-input']['tmp_name'];
+						 
+						        // Tipo de archivo
+						        $tipo = $_FILES['file-input']['type'];
+						 
+						        // Leemos el contenido del archivo temporal en binario.
+						        $fp = fopen($imagen_temporal, 'r+b');
+						        $data = fread($fp, filesize($imagen_temporal));
+						        fclose($fp);
+						 
+						        //Podríamos utilizar también la siguiente instrucción en lugar de las 3 anteriores.
+						        // $data=file_get_contents($imagen_temporal);
+						 
+						        // Escapamos los caracteres para que se puedan almacenar en la base de datos correctamente.
+						        $data = mysql_escape_string($data);
+						        // Insertamos en la base de datos.
+						        //$resultado = @mysql_query("INSERT INTO fotografia (id_couch, imagen, type) VALUES ('$id', '$data', '$tipo')") or die (mysqli_error($link));;
+								$resultado1 = "UPDATE fotografia SET imagen = '$data', type = '$tipo' WHERE id_couch = '".$id."' AND id_fotografia = '".$imagenid['id_fotografia']."'";
+									$resultado = mysqli_query($link, $resultado1) or die (mysqli_error($link));;
+								
+						 
+						        if ($resultado)
+						        {
+						            echo "El archivo ha sido copiado exitosamente.";
+						        }
+						        else
+						        {
+						            echo "Ocurrió algun error al copiar el archivo.";
+						        }
+						    }
+						    else
+						    {
+						        echo "Formato de archivo no permitido o excede el tamaño límite de $limite_kb Kbytes.";
+						    }
+
+					//----------------------------------------------------------
 					if (!$result)
 					{
 						die ('Error en la modificacion.' . mysqli_error($link));
@@ -201,7 +265,7 @@ if( $t == 1) {
 /// ACA VA EL RESTO DEL IF DISTINTO DE 1//
 	} else { 
 	 echo "<script>
-	 			alert('no puede editar el couch, esta siendo redirigido');
+	 			alert('no puede editar el couch, porque no es suyo');
      		</script>
 	 	  ";
 	 ?>

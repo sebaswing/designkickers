@@ -1,22 +1,16 @@
-<!DOCTYPE html>
+<!-- validacion en javascript para el correo -->
 <script>
 	function confirmar()
 	{
-		if(document.recuperarClave.correo.value.length == 0)
+		if(document.recuperarClave.correo1.value.length == 0)
 		{
 			alert("ingrese un correo porfavor");
-			document.recuperarClave.correo.focus();
+			document.recuperarClave.correo1.focus();
 			return false;
 		}
-		else
-		{
-	        alert("se le ha enviado su nueva contraseña por email");
-	        location.href="index.php";
-	        return true;
-    	}
-    	return false;
-    }
+	}
 </script>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -31,11 +25,11 @@
 		<h2 id="textin">recuperación de contraseña</h2>
 	</div>
 	<div>
-		<form name="recuperarClave"  onsubmit=" return confirmar();" action="index.php">
+		<form name="recuperarClave"  onsubmit=" return confirmar();" method="POST"  action="validacionrecuperar.php" >
 			<h1>POR FAVOR INGRESA TU CORREO:</h1>
-			<input type="email" name="correo" placeholder="Email de Usuario"/>
+			<input type="email" name="correo1" placeholder="Email de Usuario"/>
 			<br>
-			<button type="submit"  class="btn btn-default">RECUPERA MI CLAVE</button>
+			<button type="submit" name="aceptarrecu" class="btn btn-default">RECUPERA MI CLAVE</button>
 		  <button type="reset" onclick="location='index.php'" class="btn btn-default">CANCELAR</button>
 		</form>
 	</div>

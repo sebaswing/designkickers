@@ -40,8 +40,10 @@ video#bgvid {
 				background-color:#000;
 				color:#fff;
 				text-decoration:none;
-				padding:10px 12px;
+				padding:11px 5px;
 				display:block;
+				border-color: white;
+				border-width: thin;
 			}
 			
 			#header .nav li a:hover {
@@ -197,7 +199,7 @@ a:link{
 }
 
 #previewcouch {
-	margin: 10px;
+	margin: 90px;
 	clear: both;
 	}
 #previewcouch li{
@@ -429,4 +431,71 @@ font-family:'Averia Sans Libre', cursive;
 	overflow: hidden;
 	left: 25%;
 	clear:both;
+	}
+/* nuevo para el estilo couch*/
+#formulariocouch {
+		margin: auto;
+		display: block;
+		height: auto;
+		padding: 10px;
+		width: 80%;
+		overflow: hidden;
+	border: 1px gray solid;
+	}
+	
+	#formcouchder {
+		float: right;
+	display: block;
+	width: 50%;
+	height: 600px;
+	padding: 10px;
+	border: 1px gray solid;
+	overflow: hidden;
+	}
+
+	#formcouchfoto textarea
+	{
+		width: 336px;
+    	height: 202px;
+	}
+	
+	#formcouchfoto {
+		left: 50%;
+		padding-left: 20%;
+	}
+	
+	#formcouchizq {
+		overflow: hidden;
+		float: left;
+		display: block;
+		width: 45%;
+		height: 600px;
+		padding: 10px;
+		background: white;
+		text-align: center;	
+		border: 1px gray solid;
+	}
+	
+	#formcouchizq select {
+		width: 100px;		
+		}
+	
+	#formcouchizq textarea {
+		width: 300px;
+		height: 150px;		
+		}	
+	.thumb
+	{
+     height: 150px;
+     width: 200px;
+     border: 1px solid #000;
+     margin: 10px 5px 0 0;
+}
+ #formulariocouch h2 {
+		font-size: 14px;
+		font-family: 'Averia Sans Libre', cursive;
+	}
+#formulariocouch h1 {
+		font-size: 16px;		
+		font-family: 'Averia Sans Libre', cursive;
 	}

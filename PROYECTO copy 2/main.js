@@ -8,6 +8,7 @@
 				$('#contenedorcajasmensajes').load('includes/' + pag + '.php');
 			}
 
+	
 			function volver(pagina) {
 				$('#contenedorcajasmensajes').load('' + pagina + '.html');
 			}
