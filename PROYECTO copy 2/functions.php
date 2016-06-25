@@ -1,7 +1,7 @@
 <?php
 include ("conexion.php");
 
-if(isset($_POST['aceptar'])){
+/* if(isset($_POST['aceptar'])){
 //function cargarpremium() {
    $link = conectar();
    $tarj=$_POST['numtarjeta'];
@@ -21,7 +21,42 @@ if(isset($_POST['aceptar'])){
        <?php
    }
  }
-//}
+ *///}
+ function verificarparaeliminar($idcouch, $idreserva, $inicio, $fin){
+		$link = conectar(); 
+		$sql = "SELECT a.idreserva, a.descripcion, a.capacidad, a.fecha_inicio, a.fecha_fin 
+		FROM reserva as a 
+		WHERE a.estado = 'pendiente' 
+		and a.idcouch = '".$idcouch."'
+		and a.idreserva <> '".$idreserva."' 
+		and(( a.fecha_inicio >= '".$inicio."' 
+		and a.fecha_fin >= '".$inicio."') 
+		or (a.fecha_inicio <= '".$fin."' 
+		and a.fecha_fin >= '".$fin."') 
+		or (a.fecha_inicio >= '".$inicio."' 
+		and a.fecha_fin <= '".$fin."'))";
+				$verificarrechazo= mysqli_query($link , $sql);
+				return $verificarrechazo;
+		}
+function verificarparaeliminarbool($idcouch, $idreserva, $inicio, $fin){
+		$link = conectar(); 
+		$sql = "SELECT a.idreserva, a.descripcion, a.capacidad, a.fecha_inicio, a.fecha_fin 
+		FROM reserva as a 
+		WHERE a.estado = 'pendiente' 
+		and a.idcouch = '".$idcouch."'
+		and a.idreserva <> '".$idreserva."' 
+		and(( a.fecha_inicio >= '".$inicio."' 
+		and a.fecha_fin >= '".$inicio."') 
+		or (a.fecha_inicio <= '".$fin."' 
+		and a.fecha_fin >= '".$fin."') 
+		or (a.fecha_inicio >= '".$inicio."' 
+		and a.fecha_fin <= '".$fin."'))";
+				$verificarrechazo= mysqli_query($link , $sql);
+				$fila = mysqli_num_rows($verificarrechazo);
+				if ($fila > 0){return true;}
+				else {return false;}
+				
+		}
 function sec_session_start() {
 
     $session_name = 'sec_session_id';   // Configura un nombre de sesión personalizado.

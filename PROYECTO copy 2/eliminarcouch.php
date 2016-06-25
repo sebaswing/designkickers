@@ -29,6 +29,11 @@ if( $t == 1) {
 			// elimino logicamente con la consulta//
 			$consul='UPDATE couch SET eliminado = 1 WHERE id_couch='.$id;
 			$eliminar=mysqli_query($link,$consul);
+			echo '<script>
+			alert("su couch se ha eliminado con exito");
+			location.href="usuariocomun.php";
+			</script>';
+
 		}
 		else
 		{

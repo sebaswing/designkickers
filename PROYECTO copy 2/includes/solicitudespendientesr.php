@@ -14,7 +14,7 @@
 					echo "<h1>Fecha pedida:</h1>".$lista['fecha_inicio']." al ".$lista['fecha_fin']."";
 					?>
 						<br>
-						<form  method="POST" action="aceptarreserva.php" >
+						<form  method="POST" action="aceptareliminar.php" >
 							<?php echo "<input type='hidden' id='idreserva' name='idreserva' value='".$lista['idreserva']."' > </input>"; 
 									echo "<input type='hidden' id='idcouch' name='idcouch' value='".$lista['idcouch']."' > </input>";
 									echo "<input type='hidden' id='fecha_inicio' name='fecha_inicio' value='".$lista['fecha_inicio']."' > </input>"; 
@@ -23,7 +23,7 @@
 						<br>
 						</form>
 					  <form  method="POST" action="rechazarreserva.php">
-							<?php echo "<input type='hidden' id='idreserva1' name='idreserva1' value='".$lista['idreserva']."' > </input>" ?>
+							<?php echo "<input type='hidden' id='idreserva' name='idreserva' value='".$lista['idreserva']."' > </input>" ?>
 							<button>Rechazar</button>
 							  <br>
 					  </form>

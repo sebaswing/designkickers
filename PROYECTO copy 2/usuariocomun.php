@@ -8,6 +8,7 @@
     include("consultacategoria.php");
     include("consultaciudades.php");
     include("nuevasnotificaciones.php");
+	
 //-----------------------------------------------------
 if( $t == 1) {
 //-----------------------------------------------------
@@ -17,6 +18,11 @@ if( $t == 1) {
 	<link rel="stylesheet" type="text/css" href="estilo.css"> 
 	<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'> 
 	<link rel="icon"  href="FOTOS/favicon.jpg" />
+	<script type="text/javascript" src="main.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+	<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<title>Couch Inn!</title>
 </head>
 <div id="contenedorgeneral">
@@ -100,7 +106,7 @@ if( $t == 1) {
                               ?>
 				</select></li>		
 			<li>
-			<input type="submit" method="get" >
+			<input type="submit" method="get"  value="Buscar"> </input>
 			</li>
 		</form>
 	</ul>	
@@ -121,11 +127,15 @@ if( $t == 1) {
 			  <!-- parte nueva                                              -->			  
 			  <form  method="get" action="notificacion.php">
 	                  <?php
-						$new = mysqli_fetch_assoc($nuevosmensajes);
-					  if ($new['cantidad'] == 0){
+						$auxnew = 0;
+						while($new = mysqli_fetch_assoc($nuevosmensajes)){
+							$auxnew = $auxnew + $new['cantidad'];
+						}
+						
+					  if ($auxnew == 0){
 						  echo "<button>Notificaciones</button>";
 					  }else {
-						  echo "<button>Notificaciones (".$new['cantidad'].")</button>";
+						  echo "<button>Notificaciones (".$auxnew.")</button>";
 					  }
 					  
 					  ?>
@@ -134,8 +144,18 @@ if( $t == 1) {
 	          </form>
 		<!-- ///////////////////////////////////////////-->	
         </div>
+		<div id="header">
+		<nav> <!-- Aqui estamos iniciando la nueva etiqueta nav -->
+				<ul class="nav">
+									<!--	<li><a href="todosmiscouch.php">Mis Couch</a></li> -->
+					<li><a href="couchpublicados.php">Mis Couch publicados</a></li>
+					<li><a href="misCouch.php">Mis Couch despublicados</a></li>
+					<li><a href="usuariocomun.php">Todos los Couch</a></li>
+				</ul>
+			</nav><!-- Aqui estamos cerrando la nueva etiqueta nav -->
+		</div>
 	</div>
-
+	</div>
 	<div id="previewcouch">
 		<ul>
 		<hr> <!-- esto es para la linea debajo de los botones -->

@@ -43,7 +43,8 @@
 }
 textarea
 {
-	width: 100%;
+	width: 30%;
+	height: 200px;
 }
 #pregunta
 {

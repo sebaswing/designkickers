@@ -189,8 +189,9 @@ $link = conectar();
 	
 		$("#datecierre").datepicker({
 			dateFormat: 'yy-mm-dd',
+		 minDate: 0,
 		 maxDate: maximo,
-		minDate: 0,
+		
 		beforeShowDay: DisableDays
 		})
 		
@@ -270,6 +271,7 @@ $link = conectar();
 				</h2><br>
 				
 				<button type="submit" action="consultasolicitudcouch.php">Enviar Solicitud</button>
+				<button type="reset" onclick="location='perfilCouch.php?id=<?php echo $_POST['idcouch']; ?>'">Cancelar</button>
 		
 		</form> 
 

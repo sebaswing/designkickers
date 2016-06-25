@@ -46,7 +46,7 @@
         $data = mysql_escape_string($data);
         // Insertamos en la base de datos.
         //$resultado = @mysql_query("INSERT INTO fotografia (id_couch, imagen, type) VALUES ('$id', '$data', '$tipo')") or die (mysqli_error($link));;
-		$resultado1 = "INSERT INTO fotografia (id_couch, imagen, type) VALUES ('$id', '$data', '$tipo')";
+		$resultado1 = "INSERT INTO fotografia (id_couch, imagen, type,fotoPerfil) VALUES ('$id', '$data', '$tipo',1)";
 			$resultado = mysqli_query($link, $resultado1) or die (mysqli_error($link));;
 		
  
