@@ -63,6 +63,7 @@ if( $t == 1) {
                      				c.capacidad capacidad,
                      				c.descripcion descripcion,
                      				c.titulo titulo,
+                     				c.eliminado eliminado,
                      				ciu.ciudad_nombre nombreCiudad,
                      				cat.nombre nombreCategoria	
                            FROM couch c 
@@ -144,24 +145,38 @@ if( $t == 1) {
 	        <!--<button>Solicitar Couch</button>-->
 			<br>
 			</form>
-			<?php } else { ?>
+			<?php 
+				} 
+				else 
+				{ 
+
+					 	
+			?>
 			<!--</form>-->  
 		            <!-- le paso el id en el action para la modificacion --> 
+
 		          	<form  method="GET"  action="modificarcouch.php?action=editar&idcouch=<?php echo $_GET['id'] ?>">
 		          	<input type="hidden" id="idcouch" name="idcouch" value="<?php echo $_GET['id'] ?>" >
 		           <input type="hidden" id="action" name="action" value="first" >
 		             <button  id="campos"  align="right" type="submit"   >Modificar Couch</button>
 		             <br>
 	          </form>
+	          <?php 
+	          	if($fila['eliminado']==1)
+	          	{
+	          	?>
 	          </form>  
-		            <!-- le paso el id en el action para la modificacion --> 
+		            <!-- le paso el id en el action para a modificacion --> 
 		          	<form  method="GET"  action="republicarcouch.php?idcouch=<?php echo $_GET['id'] ?>">
-		          	<input type="hidden" id="idcouch" name="idcouch" value="<?php echo $_GET['id'] ?>" >
-		           	<input type="hidden" id="action" name="action" value="editar" >
-		             <button  id="campos"  align="right" type="submit">Republicar Couch</button>
-		             <br>
-	          </form>
-				 <?php } } ?>			
+			          	<input type="hidden" id="idcouch" name="idcouch" value="<?php echo $_GET['id'] ?>" >
+			           	<input type="hidden" id="action" name="action" value="editar" >
+			             <button  id="campos"  align="right" type="submit">Republicar Couch</button>
+			             <br>
+	          		</form>
+				 <?php 
+				} 
+			} 
+		} ?>			
 		<br>
 		<br>
 		<!--	
