@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menu Para Couch Inn</title>
+	<link rel="stylesheet" type="text/css" href="estiloMenu.css">
+</head>
+<body align="center">
+<div id="contenedorHead" >
+		<div id="logo">
+				<a href="#"><img  src="../FOTOS/logo.png"></a>
+		</div>
+		<div id="menu">
+			<ul class="nav" >	
+				<li><a href="#">inicio</a>
+					<ul>
+						<li><a href="#">sub1</a></li>
+						<li><a href="#">sub2</a></li>
+						<li><a href="#">sub3</a></li>
+						<li><a href="#">sub4</a>
+							<ul>
+								<li><a href="#">sub1.1</a></li>
+								<li><a href="#">sub2.1</a></li>
+								<li><a href="#">sub3.1</a></li>
+								<li><a href="#">sub4.1</a></li>
+							</ul>
+						</li>
+					</ul>	
+				</li>
+				<li><a href="#">couch</a>
+					<ul>
+						<li><a href="#">sub1</a></li>
+						<li><a href="#">sub2</a></li>
+						<li><a href="#">sub3</a></li>
+						<li><a href="#">sub4</a></li>
+					</ul>
+				</li>
+				<li><a href="#">reservas</a>
+					<ul>
+						<li><a href="#">sub1</a></li>
+						<li><a href="#">sub2</a></li>
+						<li><a href="#">sub3</a></li>
+						<li><a href="#">sub4</a></li>
+					</ul>
+				</li>
+				<li><a href="#">perfil</a>
+					<ul>
+						<li><a href="#">Modificar Perfil</a></li>
+						<li><a href="#">Hacete Premium!</a></li>
+						<li><a href="#">Notificaciones</a></li>
+						<li><a href="#">Cerrar Sesion</a></li>
+					</ul>	
+				</li>
+			</ul>
+	</div>
+</div>
+</body>
+</html>
