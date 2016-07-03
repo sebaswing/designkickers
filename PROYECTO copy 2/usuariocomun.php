@@ -17,6 +17,7 @@ if( $t == 1) {
 <head>
 	<link rel="stylesheet" type="text/css" href="estilo.css"> 
 	<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'> 
+	<link rel="stylesheet" type="text/css" href="Menu/estiloMenu.css"> 
 	<link rel="icon"  href="FOTOS/favicon.jpg" />
 	<script type="text/javascript" src="main.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
@@ -25,9 +26,13 @@ if( $t == 1) {
 	<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<title>Couch Inn!</title>
 </head>
+<header>
+	<?
+		include "Menu/menu.php";
+	?>	
+</header><!-- /header -->
 <div id="contenedorgeneral">
 	<div id="contenidobuscador">
-		<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
 	<div id="buscador">	
 	<ul>
 	<?php
@@ -111,48 +116,7 @@ if( $t == 1) {
 		</form>
 	</ul>	
 	</div>
-		<div id="botons">
-			  <form  method="get" action="logout.php" >
-	                  <button id="cerrar">CERRAR SESION</button>
-	                  <br>
-	          </form>
-	          <form  method="get" action="perfil.php">
-	                  <button>PERFIL</button>
-	                  <br>
-	          </form>
-	          <form  method="get" action="couch.php">
-	                  <button>PUBLICA TU COUCH</button>
-	                  <br>
-	          </form>
-			  <!-- parte nueva                                              -->			  
-			  <form  method="get" action="notificacion.php">
-	                  <?php
-						$auxnew = 0;
-						while($new = mysqli_fetch_assoc($nuevosmensajes)){
-							$auxnew = $auxnew + $new['cantidad'];
-						}
-						
-					  if ($auxnew == 0){
-						  echo "<button>Notificaciones</button>";
-					  }else {
-						  echo "<button>Notificaciones (".$auxnew.")</button>";
-					  }
-					  
-					  ?>
-					  
-					  <br>
-	          </form>
-		<!-- ///////////////////////////////////////////-->	
-        </div>
 		<div id="header">
-		<nav> <!-- Aqui estamos iniciando la nueva etiqueta nav -->
-				<ul class="nav">
-									<!--	<li><a href="todosmiscouch.php">Mis Couch</a></li> -->
-					<li><a href="couchpublicados.php">Mis Couch publicados</a></li>
-					<li><a href="misCouch.php">Mis Couch despublicados</a></li>
-					<li><a href="usuariocomun.php">Todos los Couch</a></li>
-				</ul>
-			</nav><!-- Aqui estamos cerrando la nueva etiqueta nav -->
 		</div>
 	</div>
 	</div>

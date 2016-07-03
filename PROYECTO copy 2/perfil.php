@@ -14,51 +14,27 @@ if( $t == 1) {
     $sql = 'SELECT nombre FROM `usuario` WHERE numTarjeta is NOT NULL AND mail = "'.$_SESSION['mail'].'"';
     $consulta= mysqli_query($link , $sql);
     $row = mysqli_fetch_assoc($consulta);
-    //echo $row['nombre'];
-    
+    //echo $row['nombre'];  
  ?>
-
 <html>
 <head>
 	<meta charset="UTF-8"> <!-- Especifica la codificación de caracteres para el documento HTM-->
-	<link rel="stylesheet" type="text/css" href="estiloperfil.css"> 
+	<link rel="stylesheet" type="text/css" href="estiloperfil.css">
+	<link rel="stylesheet" type="text/css" href="Menu/estiloMenu.css">  
 	<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'>
 	<link rel="icon"  href="FOTOS/favicon.jpg" />
 	<script src="modperfil.js" type="text/javascript"></script> 
 	<script type="text/javascript" src="validacion.js"></script> <!--se procesa el archivo javascrip-->
 	<title>Couch Inn!</title>
-	</head>
+</head>
+<body>
 <div id="contenedorgeneral">
 	<div id="contenidobuscador">
-		<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
-		<div id="botons">
-		   <form  method="get" action="logout.php">
-	             <button>CERRAR SESION</button>
-	             </br>
-	       </form> 
-	       <?php
-	       if ($row == 0){ ?>
-	       <form  method="get" action="premium.php">
-		                  <button>HACETE PREMIUM!</button>
-		   </form>
-		   <?php }else { echo '<h2>Cuenta premium</h2>'; }
-		   ?>
-		     <!-- parte nueva                                              -->			  
-			  <form  method="get" action="notificacion.php">
-	                  <?php
-						$new = mysqli_fetch_assoc($nuevosmensajes);
-					  if ($new['cantidad'] == 0){
-						  echo "<button>Notificaciones</button>";
-					  }else {
-						  echo "<button>Notificaciones (".$new['cantidad'].")</button>";
-					  }
-					  
-					  ?>
-					  
-					  <br>
-	          </form>
-		<!--////////////-->	
-		</div>
+		<header>
+			<?
+				include "Menu/menu.php";
+			?>
+		</header>
 	</div>
 	<div id="perfilusuario">
 	<?php  //  consulta con sql de todas las categorias de la tabla
@@ -77,13 +53,13 @@ if( $t == 1) {
 									</li>
 								    <li>
 									<form method="POST" name="formulario1" onsubmit=" return campovacio();" id="formpas" action="modperfil.php">
-									<?php echo '<p>password: </p><input  type="hidden" id="password" name="password" value="'.$row['password'].'"><p id="change1">****</p></input>'; ?>
+									<?php echo '</br><p>password: </p><input  type="hidden" id="password" name="password" value="'.$row['password'].'"><p id="change1">****</p></input>'; ?>
 									<button id="modificarpas"  onclick="javascript:modificarpas1()" value="modificar">modificar</button>
 								  </form>
 								  </li>
 								  <li>
 								  <form method="POST" name="formulario2" onsubmit=" return fecha();" id="formfecha" action="modperfil.php">
-									<?php echo '<p>Fecha de nacimiento: </p><input  type="hidden" id="fecha_nac"';
+									<?php echo '</br><p>Fecha de nacimiento: </p><input  type="hidden" id="fecha_nac"';
 										  date_default_timezone_set('America/Argentina/Buenos_Aires');
 										  $fecha= new DateTime();
 										  $año=$fecha->format('Y');
@@ -100,19 +76,19 @@ if( $t == 1) {
 								  </li>
 								  <li>
 								  <form method="POST" name="formulario3" onsubmit=" return validarape();" id="formape" action="modperfil.php">
-									<?php echo '<p>Apellido: </p><input type="hidden" id="apellido" name="apellido" value="'.$row['apellido'].'"><p id="change3">'.$row['apellido'].'</p></input>'; ?>
+									<?php echo '</br><p>Apellido: </p><input type="hidden" id="apellido" name="apellido" value="'.$row['apellido'].'"><p id="change3">'.$row['apellido'].'</p></input>'; ?>
 									<button id="modificarape" onclick="javascript:modificarape1()" value="modificar">modificar</button>
 								  </form>
 								  </li>
 								  <li>
 								  <form method="POST" name="formulario4" onsubmit=" return validarnom();" id="formnom" action="modperfil.php">
-									<?php echo '<p>Nombre: </p><input type="hidden" id="nombre" name="nombre" value="'.$row['nombre'].'"><p id="change4">'.$row['nombre'].'</p></input>'; ?>
+									<?php echo '</br><p>Nombre: </p><input type="hidden" id="nombre" name="nombre" value="'.$row['nombre'].'"><p id="change4">'.$row['nombre'].'</p></input>'; ?>
 									<button id="modificarnom" onclick="javascript:modificarnom1() "value="modificar">modificar</button>
 								  </form>
 								  </li>
 								  <li>
 								  <form method="POST" name="formulario5" onsubmit=" return validartel();" id="formtel" action="modperfil.php">
-									<?php echo '<p>Telefono: </p><input type="hidden" id="telefono" name="telefono" value="'.$row['telefono'].'"><p id="change5">'.$row['telefono'].'</p></input>'; ?>
+									<?php echo '</br><p>Telefono: </p><input type="hidden" id="telefono" name="telefono" value="'.$row['telefono'].'"><p id="change5">'.$row['telefono'].'</p></input>'; ?>
 									<button id="modificartel" onclick="javascript:modificartel1()" value="modificar">modificar</button>
 								 </form>
 								 </li>
@@ -122,8 +98,9 @@ if( $t == 1) {
 	</div>
 </div> 
 <footer> <p>CouchInn es una marca registrada. Todos los derechos reservados</p> </footer>
-
+</body>
 </html>
+
 <?php } 
 else {  ?>
         <script>
