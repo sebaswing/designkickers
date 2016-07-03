@@ -16,43 +16,19 @@ if( $t == 1) {
 <!DOCTYPE html>
 <html>
 <head>
-	<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'> 
+	<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="Menu/estiloMenu.css">  
 	<link rel="stylesheet" type="text/css" href="n.css">
 	<link rel="stylesheet" type="text/css" href="estilo.css">
 	<title></title>
 	<link rel="icon" href="FOTOS/favicon.jpg">
 </head>
 <body>
-	<div id="contenidobuscador">
-		<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
-		<div id="botons">
-			  <form  method="get" action="logout.php" >
-	                  <button id="cerrar">CERRAR SESION</button>
-	                  <br>
-	          </form>  
-		            <!-- le paso el id en el action para la modificacion --> 
-		  <!--        	<form  method="GET"  action="modificarcouch.php?action=editar&idcouch=<?php echo $_GET['id'] ?>">
-		          	<input type="hidden" id="idcouch" name="idcouch" value="<?php echo $_GET['id'] ?>" >
-		           <input type="hidden" id="action" name="action" value="first" >
-		             <button  id="modificar"   >MODIFICAR COUCH</button>
-		             <br>
-	          </form> -->
-			    <!-- parte nueva                                              -->			  
-			  <form  method="get" action="notificacion.php">
-	                  <?php
-						$new = mysqli_fetch_assoc($nuevosmensajes);
-					  if ($new['cantidad'] == 0){
-						  echo "<button>Notificaciones</button>";
-					  }else {
-						  echo "<button>Notificaciones (".$new['cantidad'].")</button>";
-					  }
-					  
-					  ?> 
-					  <br>
-	          </form>
-		<!--___________________________________-->	
-        </div>
-	</div>
+		<header>
+		<?
+			include "Menu/menu.php";
+		?>	
+		</header><!-- /header -->
 	<!-- ACA VA LA CONSULTA PARA MOSTRAR EN EL DETALLE-->
 	<?php
                     $link = conectar();
@@ -107,26 +83,31 @@ if( $t == 1) {
 				<br>
 				<br>
 				<br>
-				<br>
-				<hr>
-				Descripcion:
-				<br>
-				<div>
+				<div style="text-align:left;">
+					<br>
+					<hr>
+					<br>
+					Descripcion:
+					<br>
+						<?php
+	                          echo $fila['descripcion'];
+	                     ?>
+					<br>
+					<br>
+					Capacidad:
+					<br>
 					<?php
-                          echo $fila['descripcion'];
-                     ?>
-				</div>
-				<br>
-				Capacidad:
-				<?php
-                     echo $fila['capacidad'];
-                ?>
-                <br>
-                <br>
-                Ubicacion:
-                <?php
-                	echo $fila['nombreCiudad']; 
-                ?>
+	                     echo $fila['capacidad'];
+	                ?>
+	                <br>
+	                <br>
+	                Ubicacion:
+	                <br>
+	                <?php
+	                	echo $fila['nombreCiudad']; 
+	                ?>
+	                <br>
+                </div>
                 <br>
                 <hr>
 			</div>	
@@ -175,6 +156,16 @@ if( $t == 1) {
 	          		</form>
 				 <?php 
 				} 
+				else // esto  va a pasar si eliminado es igual 0
+				{?>
+					<form  method="GET"  action="eliminarcouch.php?idcouch=<?php echo $_GET['id'] ?>">
+		        	<input type="hidden" id="idcouch" name="idcouch" value="<?php echo $_GET['id'] ?>" >
+		      		<input type="hidden" id="action" name="action" value="first" >
+		        	<button  id="campos" >Despublicar Couch</button>
+		        	<br>
+	          		</form>
+	          	<?php
+				}
 			} 
 		} ?>			
 		<br>

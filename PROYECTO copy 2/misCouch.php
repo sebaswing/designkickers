@@ -16,138 +16,101 @@ if( $t == 1) {
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="estilo.css"> 
+	<link rel="stylesheet" type="text/css" href="Menu/estiloMenu.css">  
 	<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'> 
 	<link rel="icon"  href="FOTOS/favicon.jpg" />
 	<title>Couch Inn!</title>
 </head>
 <div id="contenedorgeneral">
+	<header>
+			<?
+				include "Menu/menu.php";
+			?>	
+	</header><!-- /header -->
 	<div id="contenidobuscador">
-		<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
-	<div id="buscador">	
-	<ul>
-	<?php
-		if(isset($_GET['Ubicacion']))
-		{
-			$ciudadActual= $_GET['Ubicacion'];
-		}
-	?>
-	<form method="get" action="miscouch.php">
-		<li>Ubicacion:
-			<select name="Ubicacion" >	
-				<option value=""></option>
-				 <?php
-                        while($ciudad = mysqli_fetch_assoc($ciudades)) //Obtiene una fila del resultado como un array asociativo
-                         {?>
-                            <?php
-		                         if($ciudadActual == $ciudad['id_ciudad'])
-		                         {
-		                         ?>
-			                           <option value="<?php echo $ciudad['id_ciudad']?>"selected>
-					                           <?php 
-					                                   echo $ciudad['ciudad_nombre'] // imprime los nombres de las categorias de bd 
-					                            ?>
-			                           </option>
-		                         <?php 
-		                          } // cierra el if
-		                          else
-		                          {
-		                          ?>
-		                          	  	<option value="<?php echo $ciudad['id_ciudad']?>">
-			                          	  	<?php
-			                          	  		echo $ciudad['ciudad_nombre'];
-			                          	  	?>
-		                          	  	</option>
-		                          <?php
-		                          }  // cierra el else
-                              } // cierra el while  
-                			  ?>
-			</select>
-		</li>
-		<br>
-		<?php
-			if(isset($_GET['Categoria']))
-			{
-			$categoriaActual= $_GET['Categoria'];
-			}
-			?>
-			<li>Categorias:
-			<select name="Categoria" >
-				 <option value=""></option>
-                             <?php
-                               while($cate = mysqli_fetch_assoc( $categorias)) //Obtiene una fila del resultado como un array asociativo
-                             	{
-                             		if($categoriaActual== $cate['id_categoria'])
-                             		{
 
-                             ?>
-			                              <option value="<?php echo $cate['id_categoria']?>"selected>
-			                                  <?php 
-			                                        echo $cate['nombre'] // imprime los nombres de las categorias de bd 
-			                                  ?>
-			                              </option>
-                              		<?php 
-                                    }
-                                    else
-                                    	{
-                               		?>
-                               				<option value= "<?php echo $cate['id_categoria']?>">
-                               				<?php
-                               						echo $cate['nombre'];
-                               				?>
-                               				</option>
-                              <?php
-                                    	}  
-                                }
-                              ?>
-				</select></li>		
-			<li>
-			<input type="submit" method="get" value="Buscar" >
+		<div id="buscador">	
+		<ul>
+		<?php
+			if(isset($_GET['Ubicacion']))
+			{
+				$ciudadActual= $_GET['Ubicacion'];
+			}
+		?>
+		<form method="get" action="miscouch.php">
+			<li>Ubicacion:
+				<select name="Ubicacion" >	
+					<option value=""></option>
+					 <?php
+	                        while($ciudad = mysqli_fetch_assoc($ciudades)) //Obtiene una fila del resultado como un array asociativo
+	                         {?>
+	                            <?php
+			                         if($ciudadActual == $ciudad['id_ciudad'])
+			                         {
+			                         ?>
+				                           <option value="<?php echo $ciudad['id_ciudad']?>"selected>
+						                           <?php 
+						                                   echo $ciudad['ciudad_nombre'] // imprime los nombres de las categorias de bd 
+						                            ?>
+				                           </option>
+			                         <?php 
+			                          } // cierra el if
+			                          else
+			                          {
+			                          ?>
+			                          	  	<option value="<?php echo $ciudad['id_ciudad']?>">
+				                          	  	<?php
+				                          	  		echo $ciudad['ciudad_nombre'];
+				                          	  	?>
+			                          	  	</option>
+			                          <?php
+			                          }  // cierra el else
+	                              } // cierra el while  
+	                			  ?>
+				</select>
 			</li>
-		</form>
-	</ul>	
-	</div>
-		<div id="botons">
-			  <form  method="get" action="logout.php" >
-	                  <button id="cerrar">CERRAR SESION</button>
-	                  <br>
-	          </form>
-	          <form  method="get" action="perfil.php">
-	                  <button>PERFIL</button>
-	                  <br>
-	          </form>
-	          <form  method="get" action="couch.php">
-	                  <button>PUBLICA TU COUCH</button>
-	                  <br>
-	          </form>
-			  <!-- parte nueva                                              -->			  
-			  <form  method="get" action="notificacion.php">
-	                  <?php
-						$auxnew = 0;
-						while($new = mysqli_fetch_assoc($nuevosmensajes)){
-							$auxnew = $auxnew + $new['cantidad'];
-						}
-						
-					  if ($auxnew == 0){
-						  echo "<button>Notificaciones</button>";
-					  }else {
-						  echo "<button>Notificaciones (".$auxnew.")</button>";
-					  }
-					  
-					  ?>
-					  
-					  <br>
-	          </form>
-		<!-- ///////////////////////////////////////////-->	
-        </div>
-		<div id="header">
-		<nav> <!-- Aqui estamos iniciando la nueva etiqueta nav -->
-				<ul class="nav">
-									<!--	<li><a href="todosmiscouch.php">Mis Couch</a></li> -->
-					<li><a href="couchpublicados.php">Mis Couch publicados</a></li>
-					<li><a href="misCouch.php">Mis Couch despublicados</a></li>
-					<li><a href="usuariocomun.php">Todos los Couch</a></li>
-				</ul>
-			</nav><!-- Aqui estamos cerrando la nueva etiqueta nav -->
+			<br>
+			<?php
+				if(isset($_GET['Categoria']))
+				{
+				$categoriaActual= $_GET['Categoria'];
+				}
+				?>
+				<li>Categorias:
+				<select name="Categoria" >
+					 <option value=""></option>
+	                             <?php
+	                               while($cate = mysqli_fetch_assoc( $categorias)) //Obtiene una fila del resultado como un array asociativo
+	                             	{
+	                             		if($categoriaActual== $cate['id_categoria'])
+	                             		{
+
+	                             ?>
+				                              <option value="<?php echo $cate['id_categoria']?>"selected>
+				                                  <?php 
+				                                        echo $cate['nombre'] // imprime los nombres de las categorias de bd 
+				                                  ?>
+				                              </option>
+	                              		<?php 
+	                                    }
+	                                    else
+	                                    	{
+	                               		?>
+	                               				<option value= "<?php echo $cate['id_categoria']?>">
+	                               				<?php
+	                               						echo $cate['nombre'];
+	                               				?>
+	                               				</option>
+	                              <?php
+	                                    	}  
+	                                }
+	                              ?>
+					</select></li>		
+				<li>
+				<input type="submit" method="get" value="Buscar" >
+				</li>
+			</form>
+		</ul>	
 		</div>
 	</div>
 	<div id="previewcouch">
@@ -303,12 +266,12 @@ if( $t == 1) {
 					 	   	    <?php
 					 	   	    echo"</li>";
 					  		}
-    ?>
-    	</ul>
-    </div>
-</div>
-</body>
-<footer> <p>CouchInn es una marca registrada. Todos los derechos reservados</p> </footer>
+    		?>
+	    	</ul>
+	    </div>
+	</div>
+	</body>
+	<footer> <p>CouchInn es una marca registrada. Todos los derechos reservados</p> </footer>
 </html>
 <!-- codigo d iniciar sesion -->	
 <?php } else {  ?>

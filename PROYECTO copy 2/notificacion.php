@@ -17,7 +17,8 @@ if( $t == 1) {
 <!--	<link rel="stylesheet" type="text/css" href="demo.css">
 	<script type="text/javascript" src="demo.js"></script>
 	-->
-	<link rel="stylesheet" type="text/css" href="estilo.css"> <!-- modificado -->	
+	<link rel="stylesheet" type="text/css" href="estilo.css"> <!-- modificado -->
+	<link rel="stylesheet" type="text/css" href="Menu/estiloMenu.css"> 	
 	<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'> 
 	<link rel="icon"  href="FOTOS/favicon.jpg" />
 	<script type="text/javascript" src="main.js"></script>
@@ -27,57 +28,12 @@ if( $t == 1) {
 	<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>	
 	
 </head>
-<div id="contenedorgeneral">
-	<div id="contenidobuscador">
-		<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
-		<?php echo $_SESSION['mail'] ?>
-		<div id="header">
-	<nav> <!-- Aqui estamos iniciando la nueva etiqueta nav -->
-				<ul class="nav">
-					<li><a href="">Mensajes Nuevos</a></li>
-					<li><a href="javascript:cargar('solicitudesenviadas');">Solicitudes Enviadas</a>
-						<ul>
-							<li><a href="javascript:cargar('solicitudespendientese');">Pendientes</a></li>
-							<li><a href="javascript:cargar('solicitudesaceptadase');">Aceptadas</a></li>
-							<li><a href="javascript:cargar('solicitudesrechazadase');">Rechazadas</a></li>
-						</ul>
-					</li>
-					<li><a href="javascript:cargar('solicitudesrecibidas');">Solicitudes Recibidas</a>
-						<ul>
-							<li><a href="javascript:cargar('solicitudespendientesr');">Pendientes</a></li>
-							<li><a href="javascript:cargar('solicitudesaceptadasr');">Aceptadas</a></li>
-							<li><a href="javascript:cargar('solicitudesrechazadasr');">Rechazadas</a></li>
-						</ul>
-					</li>
-					
-				</ul>
-			</nav><!-- Aqui estamos cerrando la nueva etiqueta nav -->
-	</div>
 
-		<div id="botons">
-			  <form  method="get" action="logout.php" >
-	                  <button id="cerrar">CERRAR SESION</button>
-	                  <br>
-	          </form>
-	          <form  method="get" action="perfil.php">
-	                  <button>PERFIL</button>
-	                  <br>
-	          </form>
-	          <form  method="get" action="couch.php">
-	                  <button>PUBLICA TU COUCH</button>
-	                  <br>
-	          </form>
-			  	  <form  method="get" action="notificacion.php">
-	                  <?php
-						  echo "<button>Notificaciones</button>";
-					  					  ?>
-					  
-					  <br>
-        </div>
-        
-	</div>
-
-<div id="contenedorcajasmensajes">
+<div id="contened<header>
+		<?
+			include "Menu/menu.php";
+		?>	
+		</header><!-- /header -->
 	<hr> <!-- esto es nuevo-->
 	<?php
 	$auxnew = 0;  // parte nueva =----------------------------------------------------------------------

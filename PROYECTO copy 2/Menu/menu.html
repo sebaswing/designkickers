@@ -5,26 +5,28 @@
 	<link rel="stylesheet" type="text/css" href="estiloMenu.css">
 </head>
 <body align="center">
-<div id="contenedorHead" >
+<div id="contenedorHead" style="position:relative;z-index:100;">
 		<div id="logo">
 				<a href="#"><img  src="../FOTOS/logo.png"></a>
 		</div>
 		<div id="menu">
 			<ul class="nav" >	
-				<li><a href="#">inicio</a>
-					<ul>
-						<li><a href="#">sub1</a></li>
-						<li><a href="#">sub2</a></li>
-						<li><a href="#">sub3</a></li>
-						<li><a href="#">sub4</a>
-							<ul>
-								<li><a href="#">sub1.1</a></li>
-								<li><a href="#">sub2.1</a></li>
-								<li><a href="#">sub3.1</a></li>
-								<li><a href="#">sub4.1</a></li>
-							</ul>
-						</li>
-					</ul>	
+				<li><a href="notificacion.php">
+				<form  method="get">
+	                  <?php
+						$new = mysqli_fetch_assoc($nuevosmensajes);
+					  if ($new['cantidad'] == 0){
+						  echo "notificaciones";
+					  }else {
+						  echo "Notificaciones (".$new['cantidad'].")";
+					  }
+					  
+					  ?>
+					  
+					  <br>
+
+	         	 	</form>
+	          		</a>	
 				</li>
 				<li><a href="#">couch</a>
 					<ul>

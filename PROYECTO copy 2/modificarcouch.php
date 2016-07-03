@@ -3,6 +3,7 @@
  // codigo agregado por julian ---------------------
  session_start();
  include("functions.php");
+ include("nuevasnotificaciones.php");
  $t = login_check($mysqli);
 //--------------------------------------
   //include("consultacategoria.php");
@@ -25,37 +26,18 @@ if( $t == 1) {
 <head>
 	<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'> 
 	<link rel="stylesheet" type="text/css" href="n.css">
+	<link rel="stylesheet" type="text/css" href="Menu/estiloMenu.css"> 
 	<link rel="stylesheet" type="text/css" href="estilo.css">
 	<title></title>
 	<link rel="icon" href="FOTOS/favicon.jpg">
 	<script type="text/javascript" src="validacion.js"></script>
 </head>
 <body>
-	<div id="contenidobuscador">
-		<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo"></a>
-		<div id="botons">
-			  <form  method="get" action="logout.php" >
-	                  <button id="cerrar">CERRAR SESION</button>
-	                  <br>
-	          </form>
-	         <!-- le paso el id en el action para la eliminacion --> 
-	         <?php 
-	         	$link1 = conectar();
-     			$sql101 = "SELECT mail FROM couch WHERE  
-     		 			mail = '".$_SESSION['mail']."' and id_couch = '".$_GET['idcouch']."' and eliminado = 0 "; // ejemplo test o sebas
-    			$consulta101= mysqli_query($link1 , $sql101); // envio la consulta
-    			$row101 = mysqli_num_rows($consulta101);
-    			if ($row101 == 1){
-	         ?>
-		      <form  method="GET"  action="eliminarcouch.php?idcouch=<?php echo $_GET['idcouch'] ?>">
-		        <input type="hidden" id="idcouch" name="idcouch" value="<?php echo $_GET['idcouch'] ?>" >
-		      	<input type="hidden" id="action" name="action" value="first" >
-		        <button  id="eliminar">ELIMINAR COUCH</button>
-		        <br>
-	          </form>
-	          <?php } ?>
-        </div>
-	</div>
+	<header>
+		<?
+			include "Menu/menu.php";
+		?>	
+		</header><!-- /header -->
 	</br>
 	</br>
 	<!--//		PARA EDITAR el maldito couch-->	
@@ -92,7 +74,7 @@ if( $t == 1) {
            			 action=" modificarcouch.php?action=editar&idcouch=<?php echo $idactual; ?>" 
            			 method="POST" enctype="multipart/form-data">
            		<div style= 'text-align:center'>
-           		<h2> Modificar datos de mi Couch:</h2>
+           		<h2 style="text-align:center;"> Modificar datos de mi Couch:</h2>
            		<br>
            				<h1>Titulo:
 					  	 <input name='titulo' id="titulo" type="text" value="<?php echo $fila['titulo'] ?>"/> 

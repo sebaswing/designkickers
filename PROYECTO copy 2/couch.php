@@ -15,7 +15,8 @@ if( $t == 1) {
 ?>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="estilocouch.css"> 
+	<link rel="stylesheet" type="text/css" href="estilocouch.css">
+	<link rel="stylesheet" type="text/css" href="Menu/estiloMenu.css">  
 	<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'>
 	<link rel="icon"  href="FOTOS/favicon.jpg" />
 	<title>Couch Inn!</title>
@@ -25,42 +26,20 @@ if( $t == 1) {
 </head>
 <body>
 <div id="contenidobuscador">
-		<a href="usuariocomun.php"><img class="iniciologo" src="FOTOS/logo.png" alt="logo" ></a>
-		<div id="botons">
-			<form  method="get" action="logout.php" >
-		          <button id="cerrar">CERRAR SESION</button>
-		          <br>
-		    </form>
-		     <form  method="get" action="perfil.php">
-	                  <button>PERFIL</button>
-	                  <br>
-	          </form>	  
-			  <form  method="get" action="notificacion.php">
-	                  <?php
-						$auxnew = 0;
-						while($new = mysqli_fetch_assoc($nuevosmensajes)){
-							$auxnew = $auxnew + $new['cantidad'];
-						}
-						
-					  if ($auxnew == 0){
-						  echo "<button>Notificaciones</button>";
-					  }else {
-						  echo "<button>Notificaciones (".$auxnew.")</button>";
-					  }
-					  
-					  ?>
-					  
-					  <br>
-	          </form>
-		   <!-- <form  method="get" action="misCouch.php" >
-		          <button id="misCouch">MIS COUCH DESPUBLICADOS</button>
-		          <br>
-		    </form> -->
-	    </div>
+		<header>
+			<?
+				include "Menu/menu.php";
+			?>
+		</header>
 </div>
 <div id="formulariocouch">
 <form name="cargacouch" method="POST" onsubmit=" return validarcouch();" action="cargarcouch.php" enctype="multipart/form-data"> 
 	<div id="formcouchizq">
+		</br>
+		</br>
+		</br>
+		</br>
+		</br>
 		<h1>Crear un couch</h1><br>
 		<h2>ingrese un titulo</h2><br>
 		<input name="titulocouch" placeholder="" />
@@ -119,6 +98,11 @@ if( $t == 1) {
 	</div>
 	<div id="formcouchder"> 
 		<div id="formcouchfoto" >
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
 				<h2>ingrese descripcion</h2>
 				<textarea name="descripcion"></textarea>
 				
